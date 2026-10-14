@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>檔案檢視</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #f6f4ef; --fg: #1d2127; --muted: #5d636b; --card: #ffffff; --line: #dedad0; --soft: #efece4; --accent: #2f5d8a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #15171b; --fg: #e7e6e2; --muted: #a2a6ac; --card: #1e2126; --line: #33373e; --soft: #24272d; --accent: #8ab4e0; }
+  }
+  :root[data-theme="dark"] { --bg: #15171b; --fg: #e7e6e2; --muted: #a2a6ac; --card: #1e2126; --line: #33373e; --soft: #24272d; --accent: #8ab4e0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.8; }
+  a { color: var(--accent); }
+  .bar { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); }
+  .bar-inner { max-width: 880px; margin: 0 auto; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; }
+  .bar a { text-decoration: none; font-size: .92rem; }
+  .crumb { flex: 1 1 100%; order: -1; color: var(--muted); font-size: .85rem; overflow-wrap: anywhere; }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 72px; }
+  article { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px clamp(16px, 4vw, 36px); overflow-wrap: anywhere; }
+  article h1, article h2 { font-family: "Noto Serif TC", serif; line-height: 1.4; }
+  article h1 { font-size: 1.6rem; } article h2 { font-size: 1.3rem; border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-top: 2em; }
+  article h3 { font-size: 1.1rem; margin-top: 1.6em; }
+  article img { max-width: 100%; }
+  article table { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; font-size: .92rem; }
+  article th, article td { border: 1px solid var(--line); padding: 6px 10px; }
+  article th { background: var(--soft); }
+  article blockquote { margin: 1em 0; padding: 4px 16px; border-left: 4px solid var(--line); color: var(--muted); }
+  pre { background: var(--soft); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-size: .85rem; line-height: 1.55; white-space: pre; }
+  pre.plain { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .93rem; line-height: 1.75; font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; }
+  code { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+  :not(pre) > code { background: var(--soft); padding: 1px 6px; border-radius: 4px; font-size: .9em; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2em 0; }
+  .msg { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-inner">
+  <span class="crumb" id="crumb">載入中</span>
+  <a href="./">回展示頁</a>
+  <a id="raw" href="#" target="_blank" rel="noopener">原始檔</a>
+  <a id="gh" href="#" target="_blank" rel="noopener">在 GitHub 檢視</a>
+</div></div>
+<main><article id="doc"><p class="msg">載入中…</p></article></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script>
+(async () => {
+  const REPO = 'https://github.com/AG-0814/261014_LLM-Oneshot-Test';
+  const doc = document.getElementById('doc');
+  const f = new URLSearchParams(location.search).get('f') || '';
+  // 只允許倉庫內的相對路徑
+  if (!f || f.includes('..') || /^[a-z]+:|^\/\//i.test(f) || !/\.(md|txt|py|json|jsonl)$/i.test(f)) {
+    doc.innerHTML = '<p class="msg">找不到要檢視的檔案。</p>'; document.getElementById('crumb').textContent = '';
+    return;
+  }
+  const url = f.split('/').map(encodeURIComponent).join('/');
+  document.getElementById('crumb').textContent = f;
+  document.getElementById('raw').href = url;
+  document.getElementById('gh').href = `${REPO}/blob/main/${url}`;
+  document.title = `${f.split('/').slice(-2).join(' / ')} · 檔案檢視`;
+  let text;
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(r.status);
+    text = await r.text();
+  } catch (e) {
+    doc.innerHTML = '<p class="msg">檔案載入失敗，請改用上方「在 GitHub 檢視」。</p>';
+    return;
+  }
+  if (/\.md$/i.test(f)) {
+    doc.innerHTML = DOMPurify.sanitize(marked.parse(text, { gfm: true, breaks: true }));
+    const used = {};
+    doc.querySelectorAll('h1, h2, h3').forEach(h => {
+      let id = h.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      if (used[id]) id += '-' + used[id]++; else used[id] = 1;
+      h.id = id;
+    });
+    doc.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+    if (location.hash) {
+      const t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (t) t.scrollIntoView();
+    }
+  } else {
+    const pre = document.createElement('pre');
+    if (/\.txt$/i.test(f)) pre.className = 'plain';
+    if (/\.json$/i.test(f)) { try { text = JSON.stringify(JSON.parse(text), null, 2); } catch (e) {} }
+    pre.textContent = text;
+    doc.replaceChildren(pre);
+  }
+})();
+</script>
+</body>
+</html>
