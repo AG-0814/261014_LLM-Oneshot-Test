@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四模型五題橫評</title>
+<style>
+  :root { --bg: #f7f6f2; --fg: #1f2328; --muted: #5b6168; --card: #ffffff; --line: #dcd9d0; --accent: #2f5d8a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #16181c; --fg: #e6e6e3; --muted: #a0a4aa; --card: #1f2227; --line: #33373e; --accent: #8ab4e0; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; line-height: 1.7; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 1.7rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .note { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; padding: 12px 16px; margin-bottom: 28px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 10px; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  a.item { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; color: var(--fg); text-decoration: none; }
+  a.item:hover { border-color: var(--accent); }
+  a.item span { color: var(--muted); font-size: 0.9rem; }
+  footer { margin-top: 36px; color: var(--muted); font-size: 0.9rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>四模型五題橫評</h1>
+  <p class="sub">2026-10-14 · Claude Opus 5.5、Claude Sonnet 5.5、Gemini 4 Argon、Muse Wonder</p>
+  <div class="note"><strong>Oneshot 式測試：</strong>每個模型每一題只作答一次，收下第一份輸出，中途沒有追問、修正或重跑。</div>
+
+  <h2>比較報告</h2>
+  <ul>
+    <li><a class="item" href="測試結果/比較報告/index.html">四模型五題橫評報告 <span>各題評語、字數實算、成本比較</span></a></li>
+  </ul>
+
+  <h2>CG 明信片作品 (模型產出的 HTML 原檔)</h2>
+  <ul>
+    <li><a class="item" href="測試結果/opus-5.5/CG圖明信片設計/postcard.html">Opus 5.5</a></li>
+    <li><a class="item" href="測試結果/sonnet-5.5/CG圖明信片設計/postcard.html">Sonnet 5.5</a></li>
+    <li><a class="item" href="測試結果/gemini-4-argon/CG圖明信片設計/postcard.html">Gemini 4 Argon</a></li>
+    <li><a class="item" href="測試結果/muse-wonder/CG圖明信片設計/postcard.html">Muse Wonder</a></li>
+  </ul>
+
+  <footer>題目、全部作答與用量紀錄請見 <a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test">GitHub 倉庫</a>。</footer>
+</main>
+</body>
+</html>
