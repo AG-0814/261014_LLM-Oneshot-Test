@@ -1,0 +1,767 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>明日方舟 - 薇薇安娜‧德羅斯特 A6 明信片</title>
+  <!-- Google Fonts: Cinzel, Cormorant Garamond, Noto Serif TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --gold-light: #f3e5ab;
+      --gold-main: #d4af37;
+      --gold-muted: #aa8c3c;
+      --dark-bg: #0c0d14;
+      --paper-bg: #faf7f0;
+      --paper-ink: #1e1b18;
+      --crimson: #7a1c24;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #16161a;
+      background-image: radial-gradient(circle at 50% 30%, #25252c 0%, #101014 100%);
+      font-family: 'Noto Serif TC', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14mm;
+      padding: 15mm 0;
+      min-height: 100vh;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* A6 橫式尺寸: 148mm × 105mm */
+    .postcard {
+      width: 148mm;
+      height: 105mm;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8mm 20mm rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(212, 175, 55, 0.25);
+      flex-shrink: 0;
+    }
+
+    /* ==================== 正面 FRONT ==================== */
+    .front {
+      background-color: var(--dark-bg);
+      color: #ffffff;
+    }
+
+    /* 主圖裁切與構圖：放大約 110% 並鎖定神情、光劍與右手燭台 */
+    .front-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('cd4ab176da252b642ebfac2074fb57f1702338129.png');
+      background-size: 112% auto;
+      background-position: 50% 18%;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    /* 局部暗角漸層，不遮擋中央畫面，僅提升邊緣文字可讀性 */
+    .front-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, rgba(10, 11, 18, 0.55) 0%, rgba(10, 11, 18, 0) 24%, rgba(10, 11, 18, 0) 68%, rgba(10, 11, 18, 0.85) 100%),
+        linear-gradient(90deg, rgba(10, 11, 18, 0.65) 0%, rgba(10, 11, 18, 0) 35%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* 細緻古典雙線內框 */
+    .front-frame {
+      position: absolute;
+      inset: 4mm;
+      border: 0.25mm solid rgba(243, 229, 171, 0.38);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .front-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0.8mm;
+      border: 0.15mm solid rgba(243, 229, 171, 0.18);
+    }
+
+    /* 頂部資訊列 */
+    .front-top {
+      position: absolute;
+      top: 6.5mm;
+      left: 7mm;
+      right: 7mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 4;
+    }
+
+    .faction-badge {
+      display: flex;
+      align-items: center;
+      gap: 2.2mm;
+    }
+
+    .logo-leithanien {
+      width: 9mm;
+      height: 9mm;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9));
+      opacity: 0.92;
+    }
+
+    .faction-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faction-en {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5pt;
+      letter-spacing: 0.25em;
+      color: var(--gold-light);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      font-weight: 600;
+    }
+
+    .event-zh {
+      font-size: 6pt;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 0.5mm;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    }
+
+    .logo-arknights {
+      height: 6.8mm;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.85));
+      opacity: 0.92;
+    }
+
+    /* 左側直排德文詩句裝飾 (仿古典詩集雜誌邊欄) */
+    .front-side-quote {
+      position: absolute;
+      left: 7mm;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      writing-mode: vertical-rl;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 7pt;
+      letter-spacing: 0.14em;
+      color: rgba(243, 229, 171, 0.72);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+    }
+
+    .front-side-quote::after {
+      content: '';
+      display: inline-block;
+      width: 0.2mm;
+      height: 10mm;
+      background: rgba(243, 229, 171, 0.45);
+    }
+
+    /* 底部角色主標題 (避開右側手部燭台) */
+    .front-bottom {
+      position: absolute;
+      bottom: 6.5mm;
+      left: 7mm;
+      right: 7mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      z-index: 4;
+    }
+
+    .character-title {
+      max-width: 90mm;
+    }
+
+    .title-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5mm;
+      font-size: 6.8pt;
+      letter-spacing: 0.22em;
+      color: var(--gold-light);
+      margin-bottom: 0.8mm;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+    }
+
+    .title-tag i {
+      width: 3mm;
+      height: 3mm;
+      color: var(--gold-main);
+    }
+
+    .name-en {
+      font-family: 'Cinzel', serif;
+      font-size: 15.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+    }
+
+    .name-zh {
+      font-size: 8.5pt;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 1.2mm;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+    }
+
+    /* 右下角極簡台詞點綴 (不遮擋燭火) */
+    .front-corner-caption {
+      text-align: right;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 7.5pt;
+      color: rgba(243, 229, 171, 0.85);
+      letter-spacing: 0.05em;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 1);
+      padding-bottom: 0.5mm;
+    }
+
+    /* ==================== 背面 BACK ==================== */
+    .back {
+      background-color: var(--paper-bg);
+      background-image: 
+        radial-gradient(circle at 15% 85%, rgba(212, 175, 55, 0.08) 0%, transparent 55%),
+        radial-gradient(circle at 85% 15%, rgba(122, 28, 36, 0.05) 0%, transparent 50%);
+      color: var(--paper-ink);
+      padding: 7.5mm 8.5mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* 背面古典細框 */
+    .back-border {
+      position: absolute;
+      inset: 4mm;
+      border: 0.3mm solid rgba(170, 140, 60, 0.45);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .back-border::before {
+      content: '';
+      position: absolute;
+      inset: 0.8mm;
+      border: 0.15mm solid rgba(170, 140, 60, 0.22);
+    }
+
+    /* 萊塔尼亞陣營大型浮水印 (將白圖轉為古典金棕浮水印) */
+    .back-watermark {
+      position: absolute;
+      left: 28%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 68mm;
+      height: 68mm;
+      object-fit: contain;
+      filter: invert(0.85) sepia(1) hue-rotate(5deg) saturate(1.8);
+      opacity: 0.06;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 背面頂部標題與郵票區 */
+    .back-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .postcard-heading {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .postcard-heading-en {
+      font-family: 'Cinzel', serif;
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: var(--paper-ink);
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .postcard-heading-en i {
+      width: 3.6mm;
+      height: 3.6mm;
+      color: var(--gold-muted);
+    }
+
+    .postcard-heading-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7.5pt;
+      letter-spacing: 0.12em;
+      color: #6e6256;
+      margin-top: 0.6mm;
+    }
+
+    /* 郵票框與郵戳組合 */
+    .stamp-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* 仿古郵戳 */
+    .postmark {
+      position: absolute;
+      left: -13mm;
+      top: 2mm;
+      width: 17mm;
+      height: 17mm;
+      border: 0.35mm solid rgba(122, 28, 36, 0.55);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(-14deg);
+      color: rgba(122, 28, 36, 0.65);
+      font-family: 'Cinzel', serif;
+      font-size: 4.5pt;
+      letter-spacing: 0.1em;
+      text-align: center;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .postmark::before {
+      content: '';
+      position: absolute;
+      inset: 1.1mm;
+      border: 0.2mm dashed rgba(122, 28, 36, 0.45);
+      border-radius: 50%;
+    }
+
+    .postmark i {
+      width: 3mm;
+      height: 3mm;
+      margin-bottom: 0.4mm;
+    }
+
+    /* 郵票框：嵌入角色模組2 (天文望遠鏡與燭台) */
+    .stamp-box {
+      width: 19mm;
+      height: 23mm;
+      border: 0.35mm solid rgba(170, 140, 60, 0.65);
+      background: #f3ede0;
+      padding: 1mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: inset 0 0 0 0.5mm #faf7f0;
+    }
+
+    .stamp-box img {
+      width: 100%;
+      height: 17.5mm;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+    }
+
+    .stamp-label {
+      font-family: 'Cinzel', serif;
+      font-size: 4.5pt;
+      letter-spacing: 0.18em;
+      color: #6e5a36;
+    }
+
+    /* 背面主體內容區 (左：官方介紹與留言區 / 右：精選台詞與收件欄) */
+    .back-body {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 6mm;
+      margin-top: 1.5mm;
+      margin-bottom: 1.5mm;
+    }
+
+    /* 中央分隔線 */
+    .back-body::after {
+      content: '';
+      position: absolute;
+      left: 53.5%;
+      top: 1mm;
+      bottom: 1mm;
+      width: 0.25mm;
+      background: linear-gradient(180deg, transparent 0%, rgba(170, 140, 60, 0.5) 15%, rgba(170, 140, 60, 0.5) 85%, transparent 100%);
+    }
+
+    /* 左欄：介紹文字、留言空間與角色模組1徽章 */
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 3mm;
+    }
+
+    .intro-card {
+      border-left: 0.6mm solid var(--crimson);
+      padding-left: 2.5mm;
+      background: rgba(170, 140, 60, 0.05);
+      padding-top: 1.2mm;
+      padding-bottom: 1.2mm;
+      padding-right: 1.5mm;
+    }
+
+    .intro-text {
+      font-size: 6.8pt;
+      line-height: 1.65;
+      color: #2c2520;
+      text-align: justify;
+      letter-spacing: 0.04em;
+    }
+
+    /* 留言書寫區 + 角色模組1 (Final Line 燭台玫瑰詩集) */
+    .message-space {
+      flex: 1;
+      position: relative;
+      margin-top: 2mm;
+      border-top: 0.2mm dashed rgba(170, 140, 60, 0.35);
+      padding-top: 1.8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .message-hint {
+      font-family: 'Cinzel', serif;
+      font-size: 5.5pt;
+      letter-spacing: 0.18em;
+      color: #8c7b65;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+
+    .message-hint i {
+      width: 2.6mm;
+      height: 2.6mm;
+    }
+
+    .module-emblem-wrap {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    .module-quote-de {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 7pt;
+      color: #5c4e3c;
+      line-height: 1.35;
+    }
+
+    .module-quote-de span {
+      display: block;
+      font-family: 'Noto Serif TC', serif;
+      font-style: normal;
+      font-size: 5.8pt;
+      color: #7c6f5e;
+      margin-top: 0.4mm;
+    }
+
+    .module-img-primary {
+      width: 22mm;
+      height: 22mm;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+      margin-right: -1mm;
+      margin-bottom: -1mm;
+    }
+
+    /* 右欄：收件地址欄與精選台詞 */
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-left: 2mm;
+    }
+
+    .address-section {
+      margin-top: 2mm;
+    }
+
+    .address-header {
+      font-family: 'Cinzel', serif;
+      font-size: 6pt;
+      letter-spacing: 0.2em;
+      color: #7c6f5e;
+      margin-bottom: 2.5mm;
+      display: flex;
+      align-items: center;
+      gap: 1.2mm;
+    }
+
+    .address-header i {
+      width: 2.8mm;
+      height: 2.8mm;
+      color: var(--gold-muted);
+    }
+
+    .address-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 4.2mm;
+    }
+
+    .address-line {
+      border-bottom: 0.25mm solid rgba(110, 98, 86, 0.4);
+      height: 3.2mm;
+      display: flex;
+      align-items: center;
+      font-family: 'Cinzel', serif;
+      font-size: 5.5pt;
+      color: rgba(110, 98, 86, 0.55);
+      padding-left: 1mm;
+    }
+
+    /* 角色精選語錄區 */
+    .voice-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+      padding-top: 2mm;
+      border-top: 0.2mm solid rgba(170, 140, 60, 0.3);
+    }
+
+    .voice-item {
+      line-height: 1.3;
+    }
+
+    .voice-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 6.8pt;
+      color: #3b322b;
+      font-weight: 600;
+    }
+
+    .voice-zh {
+      font-size: 5.8pt;
+      color: #6e6256;
+      letter-spacing: 0.04em;
+      margin-top: 0.3mm;
+    }
+
+    /* 背面底部版權與陣營資訊列 */
+    .back-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.25mm solid rgba(170, 140, 60, 0.4);
+      padding-top: 1.8mm;
+      font-size: 5.8pt;
+      color: #6e6256;
+      letter-spacing: 0.12em;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .footer-left i {
+      width: 2.8mm;
+      height: 2.8mm;
+      color: var(--crimson);
+    }
+
+    .footer-logo-ark {
+      height: 3.8mm;
+      object-fit: contain;
+      filter: invert(0.85);
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 明信片正面 (FRONT) ==================== -->
+  <section class="postcard front" aria-label="明信片正面">
+    <!-- 裁切後的主圖 -->
+    <div class="front-bg"></div>
+    <!-- 邊緣漸層保護文字可讀性 -->
+    <div class="front-overlay"></div>
+    <!-- 古典雙線邊框 -->
+    <div class="front-frame"></div>
+
+    <!-- 頂部：萊塔尼亞陣營與明日方舟 Logo -->
+    <header class="front-top">
+      <div class="faction-badge">
+        <img src="20210120051634!Logo_莱塔尼亚.png" alt="Leithanien Logo" class="logo-leithanien">
+        <div class="faction-text">
+          <span class="faction-en">LEITHANIEN</span>
+          <span class="event-zh">崔林特爾梅之金 ‧ Zwillingstürme im Herbst</span>
+        </div>
+      </div>
+      <img src="Logo_明日方舟.png" alt="明日方舟 Logo" class="logo-arknights">
+    </header>
+
+    <!-- 左側邊欄：德文閒置台詞直排裝飾 -->
+    <aside class="front-side-quote">
+      Mein Tag war heiter, glücklich meine Nacht.
+    </aside>
+
+    <!-- 底部：角色稱號與姓名 (避開右側手部燭火) -->
+    <footer class="front-bottom">
+      <div class="character-title">
+        <div class="title-tag">
+          <i data-lucide="flame"></i>
+          <span>燭騎士 ‧ THE CANDLE KNIGHT</span>
+        </div>
+        <h1 class="name-en">VIVIANA DROSTE</h1>
+        <p class="name-zh">薇薇安娜‧德羅斯特</p>
+      </div>
+      <div class="front-corner-caption">
+        "Let time rest upon this unlit night."
+      </div>
+    </footer>
+  </section>
+
+  <!-- ==================== 明信片背面 (BACK) ==================== -->
+  <section class="postcard back" aria-label="明信片背面">
+    <!-- 內縮古典邊框 -->
+    <div class="back-border"></div>
+    <!-- 萊塔尼亞陣營浮水印 -->
+    <img src="20210120051634!Logo_莱塔尼亚.png" alt="" class="back-watermark">
+
+    <!-- 頂部：明信片標題與模組郵票 -->
+    <header class="back-header">
+      <div class="postcard-heading">
+        <div class="postcard-heading-en">
+          <i data-lucide="sparkles"></i>
+          <span>POSTCARD ‧ LEITHANIEN</span>
+        </div>
+        <div class="postcard-heading-sub">Viviana Droste — The Candle Knight of Leithanien</div>
+      </div>
+
+      <!-- 郵戳與角色模組3郵票 -->
+      <div class="stamp-group">
+        <div class="postmark">
+          <i data-lucide="flame"></i>
+          <span>LEITHANIEN</span>
+          <span>ZWILLINGSTÜRME</span>
+        </div>
+        <div class="stamp-box" title="THE UNFORESEEABLE FOR VIVIANA">
+          <img src="pasted-1788277241690-0.png" alt="角色模組：望遠鏡與燭台">
+          <span class="stamp-label">ARKNIGHTS</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 中央主體：左欄官方介紹與留言區、右欄收件線與精選台詞 -->
+    <div class="back-body">
+      <!-- 左欄 -->
+      <div class="left-col">
+        <div class="intro-card">
+          <p class="intro-text">
+            燭騎士薇薇安娜·德羅斯特，言語無法形容她的美好，只有她映照光輝的眼眸令人沉醉。今夜，金盞花為她盛開。
+          </p>
+        </div>
+
+        <div class="message-space">
+          <div class="message-hint">
+            <i data-lucide="feather"></i>
+            <span>MESSAGE / 留言區</span>
+          </div>
+
+          <div class="module-emblem-wrap">
+            <div class="module-quote-de">
+              "Mein Tag war heiter, glücklich meine Nacht."
+              <span>……我的白晝晴朗，我的夜晚幸福。</span>
+            </div>
+            <img src="pasted-1788277232350-0.png" alt="角色模組：FINAL LINE" class="module-img-primary">
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄 -->
+      <div class="right-col">
+        <div class="address-section">
+          <div class="address-header">
+            <i data-lucide="mail"></i>
+            <span>RECIPIENT / 收件人資訊</span>
+          </div>
+          <div class="address-lines">
+            <div class="address-line">TO:</div>
+            <div class="address-line">ADD:</div>
+            <div class="address-line"></div>
+          </div>
+        </div>
+
+        <div class="voice-quotes">
+          <div class="voice-item">
+            <div class="voice-en">"I listen, to this passing silence. / I wait, for that belated serenity."</div>
+            <div class="voice-zh">我願傾聽此刻的沉默。／我在等待遲來的寧靜。</div>
+          </div>
+          <div class="voice-item">
+            <div class="voice-en">"Let time rest upon this unlit night."</div>
+            <div class="voice-zh">讓時間停在這個無燭的夜晚吧。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部：活動出處與 Logo -->
+    <footer class="back-footer">
+      <div class="footer-left">
+        <i data-lucide="book-open"></i>
+        <span>活動 CG 出處：《明日方舟》「崔林特爾梅之金」‧ 薇薇安娜‧德羅斯特</span>
+      </div>
+      <img src="Logo_明日方舟.png" alt="明日方舟 Logo" class="footer-logo-ark">
+    </footer>
+  </section>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+```
+
+### 裁切與設計思路說明
+1. **橫式 A6 構圖與精準裁切**：原 CG（16:9）中光劍與飄揚的金髮呈強烈對角線張力，故採用橫式 A6（148×105mm），將主圖微幅放大至 `112%` 並對齊垂直 `18%` 處，完整保留頭頂鹿角、受光眼眸、斜向光劍以及右下角手持的微光燭台。
+2. **極簡雜誌邊框與視覺避讓**：正面以古典雙細金線搭配邊緣局部暗角，將主標題收斂於左下角暗部、德文詩句直排於左側，完全避開畫面中央的光劍與右下角的燭火，最大化凸顯原圖細節。
+3. **背面古典信箋與模組巧思**：背面採用萊塔尼亞風格的暖米色信箋，將原本純白色的萊塔尼亞陣營 Logo 轉化為底層淡金浮水印，並將兩張透明背景的角色模組分別設計為右上角的「紀念郵票」與左下角留言區的「詩集火漆壓印」，兼顧明信片實用性與角色世界觀。

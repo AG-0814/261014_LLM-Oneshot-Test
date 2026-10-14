@@ -1,0 +1,1 @@
+Applying visual inspection of the keyboard layout and assessing the P key clip or bracket damage under no-internet knowledge constraints.Identifying the P key clip type and Taiwan sourcing channels for a replacement keycap.Assessing hinge integrity from photos and noting measurement and sourcing constraints for a replacement keycap.

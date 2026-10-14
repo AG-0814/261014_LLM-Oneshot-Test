@@ -1,0 +1,1 @@
+Drafting Traditional Chinese Taiwan text within 80 and 400 character limits for two GSAT questions while counting punctuation and ensuring format compliance.

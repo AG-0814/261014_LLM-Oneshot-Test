@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>燭騎士 薇薇安娜 明信片 A6</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@page { size: 105mm 148mm; margin: 0; }
+:root{
+  --navy:#101728; --navy2:#1b2440; --gold:#c9a45c; --gold2:#e8d3a0;
+  --cream:#f4ecdb; --ink:#2a2f45; --red:#8c2433;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#2b2f3a;font-family:"Noto Serif TC","Source Han Serif TC","PMingLiU","Microsoft JhengHei",serif;color:var(--ink);
+  display:flex;gap:12mm;flex-wrap:wrap;justify-content:center;padding:10mm}
+.card{width:105mm;height:148mm;position:relative;overflow:hidden;flex:none;box-shadow:0 2mm 8mm rgba(0,0,0,.5)}
+body.only{padding:0;display:block;background:none}
+body.only .card{box-shadow:none}
+body.only.front .back, body.only.back .front{display:none}
+@media print{ body{display:block;padding:0;background:none} .card{box-shadow:none;page-break-after:always} }
+
+/* ===== FRONT ===== */
+.front{background:var(--navy)}
+.front .cg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:61% 50%}
+.front .shade{position:absolute;inset:0;
+  background:
+   linear-gradient(to bottom,rgba(10,14,28,.62) 0,rgba(10,14,28,0) 15%),
+   linear-gradient(to top,rgba(8,10,22,.92) 0,rgba(8,10,22,.55) 12%,rgba(8,10,22,0) 24%)}
+.front .frame{position:absolute;inset:3.2mm;border:.25mm solid rgba(232,211,160,.85)}
+.front .frame::after{content:"";position:absolute;inset:.9mm;border:.12mm solid rgba(232,211,160,.45)}
+.corner{position:absolute;width:3mm;height:3mm;border:0 solid var(--gold2)}
+.c1{top:2.2mm;left:2.2mm;border-width:.5mm 0 0 .5mm}
+.c2{top:2.2mm;right:2.2mm;border-width:.5mm .5mm 0 0}
+.c3{bottom:2.2mm;left:2.2mm;border-width:0 0 .5mm .5mm}
+.c4{bottom:2.2mm;right:2.2mm;border-width:0 .5mm .5mm 0}
+.front .top{position:absolute;top:7mm;left:8mm;right:8mm;display:flex;justify-content:space-between;align-items:center}
+.front .top img.ak{height:6.5mm;filter:drop-shadow(0 0 1mm rgba(0,0,0,.7))}
+.front .top img.lt{height:9mm;filter:drop-shadow(0 0 1mm rgba(0,0,0,.7))}
+.front .vert{position:absolute;top:22mm;left:7.2mm;writing-mode:vertical-rl;letter-spacing:.9mm;font-size:2.6mm;color:var(--gold2);
+  text-shadow:0 0 1.5mm #000,0 0 .6mm #000}
+.front .title{position:absolute;left:8mm;right:30mm;bottom:8.5mm;color:#fff;text-shadow:0 .2mm 1.5mm rgba(0,0,0,.9)}
+.front .title .ev{font-family:Georgia,"Times New Roman",serif;font-size:2.3mm;letter-spacing:.55mm;color:var(--gold2);text-transform:uppercase}
+.front .title h1{font-size:8mm;font-weight:700;letter-spacing:.8mm;line-height:1.15;margin:1mm 0 .6mm}
+.front .title .en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:3.6mm;letter-spacing:.2mm}
+.front .title .rule{height:.25mm;width:34mm;background:linear-gradient(to right,var(--gold),transparent);margin:1.6mm 0}
+.front .title .sub{font-size:2.5mm;letter-spacing:.35mm;color:#e9e4d6}
+.front .quote{position:absolute;right:8mm;top:21mm;width:20mm;text-align:right;font-family:Georgia,serif;font-style:italic;font-size:2.4mm;line-height:1.5;color:#f6efe0;text-shadow:0 0 1.5mm #000,0 0 .8mm #000}
+
+/* ===== BACK ===== */
+.back{background:var(--cream);
+  background-image:radial-gradient(circle at 20% 15%,rgba(255,255,255,.55),transparent 55%),
+  repeating-linear-gradient(45deg,rgba(120,100,60,.025) 0 .4mm,transparent .4mm .8mm)}
+.back .band{position:absolute;top:0;left:0;right:0;height:19mm;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 7mm;
+  border-bottom:.6mm solid var(--gold)}
+.back .band img.ak{height:6mm}
+.back .band img.lt{height:11mm}
+.back .band .mid{text-align:center;color:var(--gold2);font-family:Georgia,serif;letter-spacing:.8mm;font-size:3.1mm}
+.back .band .mid small{display:block;font-size:1.9mm;letter-spacing:.5mm;margin-top:.8mm;color:#b9bfd6}
+.wm{position:absolute;width:78mm;left:13mm;top:45mm;opacity:.17;pointer-events:none;filter:saturate(.6)}
+.back .stamp{position:absolute;top:24mm;right:7mm;width:19mm;height:23mm;border:.35mm dashed var(--red);display:flex;align-items:center;justify-content:center;
+  text-align:center;color:var(--red);font-size:2mm;letter-spacing:.3mm;line-height:1.5}
+.postmark{position:absolute;top:26mm;right:21mm;width:19mm;height:19mm;border:.3mm solid rgba(42,47,69,.45);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.7mm;line-height:1.35;color:rgba(42,47,69,.55);transform:rotate(-14deg);letter-spacing:.2mm}
+.postmark::before{content:"";position:absolute;inset:1mm;border:.2mm solid rgba(42,47,69,.35);border-radius:50%}
+.back .words{position:absolute;top:24mm;left:7mm;width:58mm}
+.back .words .l1{font-family:Georgia,serif;font-style:italic;font-size:3.5mm;line-height:1.35;color:var(--navy2)}
+.back .words .z1{font-size:2.8mm;margin-top:1mm;letter-spacing:.3mm;color:#3a4160}
+.back .words .rule{width:14mm;height:.3mm;background:var(--gold);margin:2.6mm 0}
+.back .words .d{font-size:2.3mm;line-height:1.75;color:#4a506b;letter-spacing:.15mm}
+.back .lines{position:absolute;left:7mm;right:7mm;top:63mm}
+.back .lines .lab{font-size:2mm;letter-spacing:.5mm;color:var(--red);font-family:Georgia,serif;text-transform:uppercase;margin-bottom:1mm}
+.back .lines .ln{height:7mm;border-bottom:.2mm solid rgba(42,47,69,.35)}
+.back .addr{position:absolute;left:7mm;right:7mm;bottom:19mm}
+.back .addr .lab{font-size:2mm;letter-spacing:.5mm;color:var(--red);font-family:Georgia,serif;text-transform:uppercase;margin-bottom:1mm}
+.back .addr .zip{display:flex;gap:1.2mm;margin-bottom:1.5mm}
+.back .addr .zip i{width:5mm;height:5mm;border:.25mm solid var(--red)}
+.back .addr .ln{height:7mm;border-bottom:.2mm solid rgba(42,47,69,.45)}
+.back .foot{position:absolute;left:7mm;right:7mm;bottom:5.5mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:1.9mm;color:#5a6079;letter-spacing:.25mm;line-height:1.5}
+.back .foot b{color:var(--navy2)}
+.back .foot .de{font-family:Georgia,serif;font-style:italic;text-align:right}
+.back .edge{position:absolute;inset:2.2mm;border:.2mm solid rgba(201,164,92,.7);pointer-events:none}
+.back .badge{position:absolute;right:6.5mm;bottom:15mm;width:0}
+</style>
+</head>
+<body>
+
+<!-- FRONT -->
+<section class="card front" id="front">
+  <img class="cg" src="cg.png" alt="燭騎士 薇薇安娜 活動CG">
+  <div class="shade"></div>
+  <div class="frame"></div>
+  <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
+  <div class="top">
+    <img class="ak" src="logo_arknights.png" alt="Arknights 明日方舟">
+    <img class="lt" src="logo_leitania.png" alt="萊塔尼亞">
+  </div>
+  <div class="vert">今夜，金盞花為她盛開</div>
+  <div class="title">
+    <div class="ev">Event CG · 崔林特爾梅之金</div>
+    <h1>燭騎士</h1>
+    <div class="en">Viviana Droste</div>
+    <div class="rule"></div>
+    <div class="sub">薇薇安娜·德羅斯特 ／ 萊塔尼亞</div>
+  </div>
+  <div class="quote">"Let time rest<br>upon this<br>unlit night."</div>
+</section>
+
+<!-- BACK -->
+<section class="card back" id="back">
+  <img class="wm" src="finalline.png" alt="">
+  <div class="edge"></div>
+  <div class="band">
+    <img class="ak" src="logo_arknights.png" alt="Arknights">
+    <div class="mid">POST CARD<small>明信片 ・ 燭騎士</small></div>
+    <img class="lt" src="logo_leitania.png" alt="萊塔尼亞">
+  </div>
+
+  <div class="words">
+    <div class="l1">"Let time rest upon<br>this unlit night."</div>
+    <div class="z1">讓時間停在這個無燭的夜晚吧。</div>
+    <div class="rule"></div>
+    <div class="d">燭騎士薇薇安娜·德羅斯特，言語無法形容她的美好，只有她映照光輝的眼眸令人沉醉。今夜，金盞花為她盛開。</div>
+  </div>
+
+  <div class="postmark">崔林特爾<br>梅之金<br>EVENT CG</div>
+  <div class="stamp">貼 郵 票 處<br>STAMP</div>
+
+  <div class="lines">
+    <div class="lab">Message ・ 留言</div>
+    <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  </div>
+
+  <div class="addr">
+    <div class="lab">To ・ 收件人</div>
+    <div class="zip"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  </div>
+
+  <div class="foot">
+    <div><b>Viviana Droste ・ 薇薇安娜·德羅斯特</b><br>ARKNIGHTS 明日方舟 ／ 崔林特爾梅之金</div>
+    <div class="de">"Mein Tag war heiter,<br>glücklich meine Nacht."</div>
+  </div>
+</section>
+
+<script>
+(function(){var h=location.hash.replace('#','');if(h==='front'||h==='back'){document.body.className='only '+h;}})();
+</script>
+</body>
+</html>

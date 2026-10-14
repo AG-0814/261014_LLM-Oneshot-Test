@@ -1,0 +1,1 @@
+Evaluating content structure and tone requirements for a Taiwan Starbucks commercial analysis article in Traditional Chinese.Drafting a Traditional Chinese FB post that frames backlash causes, labels speculation, and cites only reported figures.

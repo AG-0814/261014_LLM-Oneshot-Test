@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>薇薇安娜・德羅斯特｜A6 明信片</title>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#1a1a20;
+    background-image:radial-gradient(circle at 50% 0%,#2b2b36 0%,#141419 58%);
+    font-family:"Noto Serif TC","Songti TC",serif;
+    display:flex;flex-direction:column;align-items:center;
+    padding:10mm 0 12mm;gap:5mm;color:#2b2418;
+  }
+  .label{
+    width:148mm;color:#c9b98a;font-family:"Noto Sans TC",sans-serif;
+    font-size:8pt;letter-spacing:.35em;display:flex;align-items:center;gap:4mm;
+  }
+  .label::before,.label::after{content:"";flex:1;height:1px;background:#4a4436}
+  .label i{width:13px;height:13px;color:#c9b98a}
+  .card{
+    width:148mm;height:105mm; /* A6 橫式 148 × 105 mm */
+    position:relative;overflow:hidden;flex:none;
+    box-shadow:0 6mm 18mm rgba(0,0,0,.55);
+  }
+
+  /* ============ 正面 ============ */
+  .front{background:#0b0e1d;color:#fff}
+  .front .hero{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;
+    /* 橫式只輕裁左右，保留臉部、光劍對角線與右下燭火 */
+    object-position:50% 38%;
+  }
+  .front .shade{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(to bottom,rgba(5,6,18,.52) 0%,transparent 24%,transparent 58%,rgba(5,6,18,.78) 100%),
+      linear-gradient(to right,rgba(5,6,18,.25),transparent 35%);
+  }
+  .front .frame{
+    position:absolute;inset:3.2mm;border:.35mm solid rgba(216,190,125,.85);
+    outline:.15mm solid rgba(216,190,125,.35);outline-offset:1mm;pointer-events:none;z-index:5;
+  }
+  .topbar{
+    position:absolute;top:5.5mm;left:6mm;right:6mm;z-index:6;
+    display:flex;justify-content:space-between;align-items:flex-start;
+  }
+  .arknights{height:8.5mm;mix-blend-mode:screen;filter:brightness(1.15)}
+  .event{text-align:right;font-family:"Noto Sans TC",sans-serif}
+  .event small{display:block;font-size:6pt;letter-spacing:.42em;color:#e7d6a0;margin-bottom:1mm}
+  .event strong{font-family:"Noto Serif TC",serif;font-size:10.5pt;letter-spacing:.28em;font-weight:600}
+  .event span{display:block;margin-top:1.2mm;font-size:5.5pt;letter-spacing:.22em;color:rgba(255,255,255,.75)}
+  .faction{
+    position:absolute;top:22mm;right:6mm;z-index:6;text-align:center;
+    font-family:"Noto Sans TC",sans-serif;
+  }
+  .faction img{width:13mm;height:13mm;object-fit:contain;mix-blend-mode:screen;opacity:.95}
+  .faction p{font-size:5pt;letter-spacing:.3em;margin-top:.8mm;color:#eee3c2}
+  .faction p b{display:block;font-size:6.5pt;letter-spacing:.18em;margin-top:.6mm}
+  .bottom{position:absolute;left:6.5mm;right:6.5mm;bottom:5.5mm;z-index:6}
+  .kicker{
+    display:flex;align-items:center;gap:2.5mm;color:#e7d6a0;
+    font-family:"Noto Sans TC",sans-serif;font-size:6pt;letter-spacing:.45em;margin-bottom:2mm;
+  }
+  .kicker i{width:12px;height:12px}
+  .kicker::after{content:"";width:18mm;height:1px;background:#c9ab63}
+  h1{font-size:23pt;line-height:1;letter-spacing:.08em;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  h1 span{display:block;font-family:Georgia,serif;font-size:8.5pt;letter-spacing:.52em;color:#e7d6a0;margin-bottom:2mm;font-weight:400}
+  .intro{
+    margin-top:2.6mm;max-width:96mm;font-size:7.3pt;line-height:1.75;letter-spacing:.06em;color:rgba(255,255,255,.92);
+  }
+  .quote-en{margin-top:2mm;font-family:Georgia,serif;font-style:italic;font-size:6.8pt;letter-spacing:.04em;color:#f0e3b8}
+
+  /* ============ 背面 ============ */
+  .back{background:#f6efe0;color:#2e2a22;padding:6mm 6.5mm}
+  .back::before{
+    content:"";position:absolute;inset:3mm;border:.3mm solid #b49b62;pointer-events:none;
+  }
+  .back-head{
+    position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
+    border-bottom:.25mm solid #c8b88e;padding-bottom:2.5mm;
+  }
+  .back-head .t{display:flex;align-items:center;gap:2.5mm}
+  .back-head img{height:6.5mm;filter:invert(1);mix-blend-mode:multiply}
+  .back-head h2{font-size:10pt;letter-spacing:.25em}
+  .back-head small{font-family:"Noto Sans TC",sans-serif;font-size:5.5pt;letter-spacing:.28em;color:#8a7443}
+  .postmark{
+    position:absolute;top:15mm;right:31mm;z-index:4;width:19mm;height:19mm;border:.35mm solid rgba(70,70,80,.55);
+    border-radius:50%;transform:rotate(-12deg);display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:"Noto Sans TC",sans-serif;color:rgba(70,70,80,.65);text-align:center;
+  }
+  .postmark b{font-size:5.5pt;letter-spacing:.15em}
+  .postmark span{font-size:4.8pt;letter-spacing:.08em;margin-top:.6mm}
+  .postmark i{width:10px;height:10px;margin-bottom:.6mm}
+  .cols{position:relative;z-index:2;display:flex;gap:6mm;margin-top:4mm;height:76mm}
+  .left{flex:1.15;border-right:.25mm dashed #b9a678;padding-right:5mm;position:relative}
+  .right{flex:.85;display:flex;flex-direction:column}
+  .sec{
+    display:flex;align-items:center;gap:1.8mm;font-family:"Noto Sans TC",sans-serif;
+    font-size:6pt;letter-spacing:.32em;color:#8a7443;margin-bottom:2.5mm;
+  }
+  .sec i{width:11px;height:11px}
+  .lines{margin-top:1mm}
+  .lines div{height:6.2mm;border-bottom:.25mm solid #cdbd97}
+  .quote{margin-top:3.5mm}
+  .quote p{font-family:Georgia,serif;font-style:italic;font-size:6.4pt;line-height:1.6;color:#51452c}
+  .quote p+p{margin-top:1.4mm}
+  .quote .zh{font-family:"Noto Serif TC",serif;font-style:normal;font-size:6.3pt;letter-spacing:.08em;color:#6b5a35}
+  .badge{
+    position:absolute;left:0;bottom:0;display:flex;align-items:center;gap:3mm;
+  }
+  .badge .imgbox{width:22mm;height:22mm;background:#0d0d12;border-radius:50%;overflow:hidden;border:.35mm solid #b49b62;flex:none}
+  .badge .imgbox img{width:100%;height:100%;object-fit:cover}
+  .badge p{font-size:5.8pt;line-height:1.7;letter-spacing:.12em;color:#6b5a35}
+  .badge p b{font-size:6.5pt;color:#3d3420;letter-spacing:.2em}
+  .stamp{
+    align-self:flex-end;width:24mm;height:27mm;background:#111;padding:1.2mm;
+    border:.3mm dashed #f6efe0;outline:.3mm solid #b49b62;box-shadow:0 1mm 3mm rgba(0,0,0,.2)
+  }
+  .stamp img{width:100%;height:100%;object-fit:cover;display:block}
+  .addr{margin-top:8mm}
+  .addr .row{display:flex;align-items:flex-end;gap:2mm;height:8mm;border-bottom:.25mm solid #b9a678}
+  .addr .row i{width:11px;height:11px;color:#8a7443;margin-bottom:1mm}
+  .addr .row span{font-family:"Noto Sans TC",sans-serif;font-size:5.5pt;letter-spacing:.25em;color:#9a865c}
+  .zip{display:flex;gap:1.2mm;margin-top:3mm;align-items:center}
+  .zip i{width:11px;height:11px;color:#8a7443}
+  .zip b{width:5mm;height:6mm;border:.3mm solid #a68f5a;display:inline-block}
+  .back-foot{
+    margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;
+    font-family:"Noto Sans TC",sans-serif;font-size:5pt;letter-spacing:.22em;color:#9a865c;
+  }
+  .back-foot .lei{display:flex;align-items:center;gap:1.8mm}
+  .back-foot .lei img{width:8mm;height:8mm;object-fit:contain;filter:invert(1);mix-blend-mode:multiply}
+  @media print{body{background:#fff;padding:0}.label{display:none}.card{box-shadow:none;margin-bottom:5mm}}
+</style>
+</head>
+<body>
+
+<div class="label"><i data-lucide="flame"></i> FRONT ・ 正面 <i data-lucide="sparkles"></i></div>
+
+<!-- 正面：A6 橫式 -->
+<section class="card front">
+  <img class="hero" src="cd4ab176da252b642ebfac2074fb57f1702338129.png" alt="崔林特爾梅之金 活動 CG">
+  <div class="shade"></div><div class="frame"></div>
+
+  <div class="topbar">
+    <img class="arknights" src="Logo_明日方舟.png" alt="明日方舟">
+    <div class="event">
+      <small>ARKNIGHTS EVENT CG</small>
+      <strong>崔林特爾梅之金</strong>
+      <span>活動 CG ・ POSTCARD</span>
+    </div>
+  </div>
+
+  <div class="faction">
+    <img src="20210120051634!Logo_莱塔尼亚.png" alt="萊塔尼亞">
+    <p>LEITHANIEN<b>萊塔尼亞</b></p>
+  </div>
+
+  <div class="bottom">
+    <div class="kicker"><i data-lucide="flame"></i>燭騎士</div>
+    <h1><span>VIVIANA DROSTE</span>薇薇安娜・德羅斯特</h1>
+    <p class="intro">燭騎士薇薇安娜·德羅斯特，言語無法形容她的美好，只有她映照光輝的眼眸令人沉醉。今夜，金盞花為她盛開。</p>
+    <p class="quote-en">“Let time rest upon this unlit night.”</p>
+  </div>
+</section>
+
+<div class="label"><i data-lucide="mail"></i> BACK ・ 背面 <i data-lucide="pen-line"></i></div>
+
+<!-- 背面：明信片格式 -->
+<section class="card back">
+  <div class="back-head">
+    <div class="t">
+      <img src="Logo_明日方舟.png" alt="明日方舟">
+      <div><h2>明信片</h2><small>POSTCARD ・ 崔林特爾梅之金</small></div>
+    </div>
+    <small>燭騎士 ・ LEITHANIEN</small>
+  </div>
+
+  <div class="postmark"><i data-lucide="flame"></i><b>LEITHANIEN</b><span>崔林特爾梅之金</span></div>
+
+  <div class="cols">
+    <div class="left">
+      <div class="sec"><i data-lucide="pen-line"></i>留言區 MESSAGE</div>
+      <div class="quote">
+        <p>“I listen, to this passing silence.”<br>“I wait, for that belated serenity.”</p>
+        <p class="zh">我願傾聽此刻的沉默。我在等待遲來的寧靜。</p>
+        <p>“Mein Tag war heiter, glücklich meine Nacht.”</p>
+        <p class="zh">……我的白晝晴朗，我的夜晚幸福。</p>
+      </div>
+      <div class="lines"><div></div><div></div><div></div></div>
+
+      <div class="badge">
+        <div class="imgbox"><img src="pasted-1788277241690-0.png" alt="角色模組設計"></div>
+        <p><b>薇薇安娜・德羅斯特</b><br>VIVIANA DROSTE<br>燭騎士 ・ 萊塔尼亞</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="stamp"><img src="pasted-1788277232350-0.png" alt="郵票"></div>
+
+      <div class="addr">
+        <div class="sec" style="margin-bottom:0"><i data-lucide="mail"></i>收件人 TO</div>
+        <div class="row"><i data-lucide="user"></i><span>收件人</span></div>
+        <div class="row"><i data-lucide="map-pin"></i><span>地址</span></div>
+        <div class="row"><i data-lucide="send"></i><span>地址</span></div>
+        <div class="zip"><i data-lucide="hash"></i><b></b><b></b><b></b><b></b><b></b></div>
+      </div>
+
+      <div class="back-foot">
+        <div class="lei"><img src="20210120051634!Logo_莱塔尼亚.png" alt="萊塔尼亞">萊塔尼亞 LEITHANIEN</div>
+        <span>105 × 148 MM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>

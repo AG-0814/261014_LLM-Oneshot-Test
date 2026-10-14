@@ -1,0 +1,267 @@
+<title>四模型五題橫評</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 單欄閱讀報告，總表置頂，各題以「四模型對照表＋判讀」展開，表格可橫向捲動 */
+:root {
+  --bg: #f5f6f4;
+  --surface: #ffffff;
+  --fg: #1d2421;
+  --muted: #5b6661;
+  --line: #d9dfdb;
+  --accent: #1f6f5c;
+  --accent-soft: #e2efea;
+  --good: #1f7a4d;
+  --good-bg: #e3f3ea;
+  --mid: #8a6a12;
+  --mid-bg: #f6efd9;
+  --weak: #a43d2f;
+  --weak-bg: #f8e6e2;
+  --m-opus: #b4562c;
+  --m-sonnet: #3d6fb0;
+  --m-g4a: #2e8a6f;
+  --m-muse: #7a4fa8;
+  --font-display: "Noto Serif TC", "Songti TC", serif;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141917; --surface: #1c2220; --fg: #e4e9e6; --muted: #9aa6a0; --line: #2f3834;
+    --accent: #6cc3a8; --accent-soft: #1f302a;
+    --good: #7fd3a5; --good-bg: #1d3328; --mid: #e0c068; --mid-bg: #352d17; --weak: #f0998b; --weak-bg: #3a221e;
+    --m-opus: #e08a5e; --m-sonnet: #7fa7e0; --m-g4a: #6cc3a8; --m-muse: #b493de;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141917; --surface: #1c2220; --fg: #e4e9e6; --muted: #9aa6a0; --line: #2f3834;
+  --accent: #6cc3a8; --accent-soft: #1f302a;
+  --good: #7fd3a5; --good-bg: #1d3328; --mid: #e0c068; --mid-bg: #352d17; --weak: #f0998b; --weak-bg: #3a221e;
+  --m-opus: #e08a5e; --m-sonnet: #7fa7e0; --m-g4a: #6cc3a8; --m-muse: #b493de;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15.5px; line-height: 1.75; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 44px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.35; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); }
+h2 { font-size: 1.35rem; padding-bottom: 8px; border-bottom: 2px solid var(--fg); }
+h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 68ch; }
+ul { margin: 0; padding-left: 1.2em; max-width: 72ch; }
+li + li { margin-top: 4px; }
+section { display: grid; gap: 16px; min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+header { display: grid; gap: 12px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 14px; }
+.meta b { color: var(--fg); font-weight: 500; }
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-weight: 700; font-size: 13px; color: var(--muted); background: var(--accent-soft); white-space: nowrap; }
+td:first-child { white-space: nowrap; }
+td.num, th.num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.model { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; white-space: nowrap; }
+.model::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--c); flex: none; }
+.opus { --c: var(--m-opus); } .sonnet { --c: var(--m-sonnet); } .g4a { --c: var(--m-g4a); } .muse { --c: var(--m-muse); }
+.sub { display: block; font-weight: 400; font-size: 12px; color: var(--muted); }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 3px; white-space: nowrap; }
+.t-good { color: var(--good); background: var(--good-bg); }
+.t-mid { color: var(--mid); background: var(--mid-bg); }
+.t-weak { color: var(--weak); background: var(--weak-bg); }
+.note { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; color: var(--muted); font-size: 14.5px; max-width: 72ch; }
+.verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; }
+.verdict h3 { font-size: .98rem; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; background: var(--surface); }
+figcaption { font-size: 13.5px; color: var(--muted); }
+figcaption .model { font-size: 13.5px; }
+.pair { display: grid; gap: 8px; }
+code { font-family: var(--font-mono); font-size: .9em; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+@media (max-width: 520px) { body { font-size: 15px; } .wrap { padding-inline: 16px; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">LLM 能力測試 · 2026-10-14</span>
+  <h1>四模型五題橫評</h1>
+  <p>同一組五道實務題 (CG 明信片設計、email 書寫、學測作文、經費配平、時事評論)，分別交給 Claude Opus 5.5、Claude Sonnet 5.5、Gemini 4 Argon、Muse Wonder 作答。以下比較作答品質、事實正確性與成本。</p>
+  <div class="meta">
+    <span><b>受測模型</b> 4 個</span>
+    <span><b>題目</b> 5 題</span>
+    <span><b>思考強度</b> 一律 medium</span>
+    <span><b>驗證</b> 數字以程式重算，事實對照新聞原文</span>
+  </div>
+</header>
+
+<section>
+  <h2>總結</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>題目</th><th><span class="model opus">Opus 5.5</span></th><th><span class="model sonnet">Sonnet 5.5</span></th><th><span class="model g4a">Gemini 4 Argon</span></th><th><span class="model muse">Muse Wonder</span></th></tr></thead>
+    <tbody>
+      <tr><td>數學配平</td><td><span class="tag t-good">優</span> 改 1 盒歸零</td><td><span class="tag t-mid">待定</span> 0 盒歸零，靠混價假設</td><td><span class="tag t-weak">弱</span> 未歸零，最佳值算錯</td><td><span class="tag t-good">優</span> 與 Opus 同解，代價列得最完整</td></tr>
+      <tr><td>email 書寫</td><td><span class="tag t-good">優</span> 查到維修手冊與料號</td><td><span class="tag t-mid">可</span> 注音標錯，信中一句不妥</td><td><span class="tag t-mid">可</span> 多處講得過度肯定</td><td><span class="tag t-good">良</span> 謹慎、不編造</td></tr>
+      <tr><td>CG 明信片</td><td><span class="tag t-good">優</span> 正背面都完整</td><td><span class="tag t-mid">良</span> 正面佳，背面較弱</td><td><span class="tag t-good">優</span> 設計最完整，主圖有黑邊</td><td><span class="tag t-mid">可</span> 文字溢出、被遮</td></tr>
+      <tr><td>學測作文</td><td><span class="tag t-good">優</span> 扣圖最緊</td><td><span class="tag t-mid">良</span> 問題 (二) 字數偏少</td><td><span class="tag t-good">良</span> 結構完整</td><td><span class="tag t-good">優</span> 文筆最佳，背面最短</td></tr>
+      <tr><td>時事銳評</td><td><span class="tag t-good">良</span> 結構清楚，補了外部資料</td><td><span class="tag t-good">良</span> 分析細，略超篇幅</td><td><span class="tag t-mid">可</span> 資訊最多，但篇幅超出一倍</td><td><span class="tag t-good">優</span> 篇幅最準，口吻最在地</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">標籤是同一題內的相對評價，不同題之間不可直接比較。四個模型的作答條件不同 (見下節)，Claude 兩個模型可以上網和執行程式，API 兩個模型不行，解讀時請把這點算進去。</p>
+</section>
+
+<section>
+  <h2>測試條件</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th>呼叫管道</th><th>Prompt 版本</th><th>可用工具</th><th>附件處理</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td>Claude Code 子代理</td><td><code>prompt_App.txt</code></td><td>讀檔、上網、執行程式</td><td>自行讀取圖片與 PDF</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td>Claude Code 子代理</td><td><code>prompt_App.txt</code></td><td>讀檔、上網、執行程式</td><td>PDF 無法轉圖，改用文字擷取，作文題沒看到幾米圖</td></tr>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span><span class="sub">google/gemini-4-argon</span></td><td>OpenRouter API</td><td><code>prompt_API.txt</code></td><td>無</td><td>圖片與原生 PDF 直接傳送，每個附件前加檔名標籤</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span><span class="sub">meta/muse-wonder</span></td><td>OpenRouter API</td><td><code>prompt_API.txt</code></td><td>無</td><td>同上</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>API 版的數學題多附了表格文字版，App 版只有三張分表截圖，所以 Claude 兩個模型要自己辨識表格數字 (兩者都讀對了)。</li>
+    <li>子代理會載入使用者的全域偏好設定，回答開頭多一句假設說明，屬於環境造成的差異。</li>
+    <li>參考答案 (Opus 5 在 app 端的作答) 已移出測試資料夾，受測模型都沒有接觸到。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>數學計算：經費配平</h2>
+  <p>目標依序為：計畫A不超支、計畫B膳費併成 4 張、計畫B餘額歸零、保留 計畫C黃色項目。關鍵卡點在計畫B三張便當要湊出 8,112 元，而單價只能是 5 的倍數且不超過 120。</p>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th>單據單價假設</th><th class="num">計畫B餘額</th><th>便當個數變動</th><th class="num">計畫A餘額</th><th class="num">計畫C餘額</th><th class="num">個數不動時最佳</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td>每張一個單價</td><td class="num">0</td><td>0814 的 1 盒改報 0818，另併入計畫A 3 盒</td><td class="num">480</td><td class="num">1,429</td><td class="num">6</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td>同一張可有兩種單價</td><td class="num">0</td><td>不變動</td><td class="num">1,030</td><td class="num">879</td><td class="num">51</td></tr>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span></td><td>每張一個單價</td><td class="num">55</td><td>不變動 (計畫C拆出一個 80 元便當)</td><td class="num">40</td><td class="num">1,814</td><td class="num">55 (有誤)</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span></td><td>每張一個單價</td><td class="num">0</td><td>0814 −1、0818 +4、計畫A批 −3 (與 Opus 同解)</td><td class="num">68</td><td class="num">1,841</td><td class="num">51</td></tr>
+    </tbody>
+  </table></div>
+  <div class="verdict">
+    <h3>判讀</h3>
+    <ul>
+      <li>四份主方案的加總我都重算過，三計畫合計 163,091 元、便當池總額守恆，算式本身都成立。</li>
+      <li>Opus 與 Muse 找到同一組解，比 Opus 5 參考答案 (0814 改 19 盒、0818 改 29 盒) 動得更少。差別在 Opus 只算 1 盒變動，Muse 把跨日併入的 3 盒也算進去，Muse 的算法比較誠實。</li>
+      <li>Opus 的「個數變動」定義前後矛盾：定義寫跨日改報算變動，但計畫A 0805 併入 0818 的 3 盒沒有算進去。</li>
+      <li>Sonnet 的 0 盒解成立與否，取決於一張收據能否列兩種便當單價。它的備案 (單一單價、個數不動時餘額 51) 和我窮舉的結果一致。</li>
+      <li>Gemini 4 Argon 最弱：它斷定個數不動最好只能到 55 元，實際可到 51；備案寫成「0814 改為 10 盒」，沒找到只改 1 盒的解；答案中還留著「不對，我們需要湊…」的自我修正過程與 emoji。</li>
+      <li>Muse 用了 LaTeX 公式語法，在純文字環境顯示較亂。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>email 書寫：鍵帽詢價</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th>第一問 (規格與購買)</th><th>第二問 (英文信)</th><th>問題</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td>上網找到 HP 14-fm0xxx 維修手冊，推定上蓋料號 P31088-AB1 並標明是推定；判讀機身色為 Atmospheric blue；建議先嘗試自行裝回</td><td>實際抓取商品頁確認矛盾，發現 HPS26-25 列的圖檔名是 hc22，可能對應 HPS-22；列 7 項追問</td><td>無明顯錯誤</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td>有上網，但引用的是其他系列的料號，參考價值低</td><td>8 項追問，內容完整</td><td>把 P 鍵注音寫成「ㄆ」(應為「ㄣ」)；第 5 題 “can you declare the package value accordingly” 等於請賣家配合調整報關價值，寄出前應刪除</td></tr>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span></td><td>列了淘寶、殺肉鍵盤等實用管道</td><td>只有 3 項追問</td><td>宣稱照片「清楚可見」扣爪白化微裂；斷定 HAC 是精元或群光模具代號；台灣料號後綴寫 -AB0，和 Opus 查到的手冊 (-AB1) 不符</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span></td><td>照要求不給料號與價格，判讀處都標示需現場確認</td><td>6 項追問，指出 HPS 編號是賣家自訂分類</td><td>信中寫附 3 張照片，實際只有 2 張</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Opus 的優勢主要來自能上網查官方手冊。在不能上網的條件下，Muse 的「不知道就說不知道」比 Gemini 的過度肯定更可靠。</p>
+</section>
+
+<section>
+  <h2>CG 明信片設計</h2>
+  <p>四個模型都交出 HTML，正背兩面齊全。Claude 兩個模型自行截圖檢查；API 兩個模型的畫面由我以無頭 Chrome 渲染。</p>
+  <div class="gallery">
+    <figure>
+      <div class="pair"><img src="img/opus-front.jpg" alt="Opus 5.5 明信片正面" loading="lazy"><img src="img/opus-back.jpg" alt="Opus 5.5 明信片背面" loading="lazy"></div>
+      <figcaption><span class="model opus">Opus 5.5</span> 橫式。背面為標準左右分欄，郵票框放角色臉部特寫，有用 Lucide 圖標。郵戳文字「MARIGOLD 今夜盛開」取自介紹句。</figcaption>
+    </figure>
+    <figure>
+      <div class="pair"><img src="img/sonnet-front.jpg" alt="Sonnet 5.5 明信片正面" loading="lazy"><img src="img/sonnet-back.jpg" alt="Sonnet 5.5 明信片背面" loading="lazy"></div>
+      <figcaption><span class="model sonnet">Sonnet 5.5</span> 直式。正面構圖好，有直排介紹句。背面單欄，FINAL LINE 浮水印壓在留言線後方，會干擾書寫；沒有用 Lucide。</figcaption>
+    </figure>
+    <figure>
+      <img src="img/g4a.jpg" alt="Gemini 4 Argon 明信片正背面" loading="lazy">
+      <figcaption><span class="model g4a">Gemini 4 Argon</span> 橫式，版面元素最豐富。正面主圖沒有填滿，底部露出黑邊。自行加上活動德文名「Zwillingstürme im Herbst」，違反「只用提供內容」的要求。</figcaption>
+    </figure>
+    <figure>
+      <img src="img/muse.jpg" alt="Muse Wonder 明信片正背面" loading="lazy">
+      <figcaption><span class="model muse">Muse Wonder</span> 橫式。正面右上「LEITHANIEN」被 Logo 蓋住；背面右下文字超出邊框，留言區只剩三條線可寫。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>學測作文</h2>
+  <p>字數以程式依題目規則計算 (中文字與標點各計 1，題目、換行、空白不計)。四個模型都沒有超出限制。</p>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th class="num">問題 (一)<br>上限 80</th><th class="num">問題 (二)<br>上限 400</th><th class="num">背面作文<br>上限 836</th><th>選用素材</th><th>評語</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td class="num">77</td><td class="num">360</td><td class="num">714</td><td>捷運站賣口香糖的老伯／父親</td><td>結尾把「頭碰頭」「把圖轉正」收回題目，扣圖最緊；自報字數與實算完全一致</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td class="num">62</td><td class="num">292</td><td class="num">675</td><td>賣口香糖的老爺爺、同學阿哲／母親</td><td>問題 (二) 只用了上限的七成，21 分的題目可能吃虧；作答時沒看到圖</td></tr>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span></td><td class="num">77</td><td class="num">316</td><td class="num">696</td><td>賣玉蘭花的婆婆、主動買花的高中生／父親</td><td>開頭先描述圖文，結構完整，用語略為制式</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span></td><td class="num">72</td><td class="num">344</td><td class="num">573</td><td>校門口賣玉蘭花的阿婆／父親</td><td>文學性最高，細節最有畫面；背面作文四者最短</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">四個模型的問題 (二) 都選了「路邊年長攤販」當例子，應是受題幹「兜售商品的小販」提示影響，素材同質性高。</p>
+</section>
+
+<section>
+  <h2>時事熱點銳評</h2>
+  <p>要求篇幅 1,500 至 2,000 字。字數為中文字與標點的實算值。文中引用的數字 (加料最多 8 份、年費 711 元、優惠到 12/31、「愿秀」門市、會員破 2,000 萬、統一超 9 月營收 314.4 億等) 都已對照新聞原文，四篇都沒有錯。</p>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th class="num">字數</th><th>特色</th><th>問題</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td class="num">2,106</td><td>七個面向分段清楚，結論「方向合理，手法粗糙」；上網補了 2017 年統一星巴克股權背景並附來源</td><td>補充的外部資料未經我另外查證</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td class="num">2,358</td><td>把消費者分成三種客群分析，推測段落標示清楚</td><td>「店員哭著求大家」是加油添醋，原文只說「心好累」</td></tr>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span></td><td class="num">3,989</td><td>資訊量最大，價格歧視與會員導流的論點最完整，語氣最衝</td><td>篇幅是上限的兩倍；結尾的「按讚分享」偏網紅腔</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span></td><td class="num">2,173</td><td>最接近要求篇幅，「心理契約」的論點清楚，用語最像台灣自媒體 (例如「奇檬子」)</td><td>沒有列來源 (API 版 prompt 未強制要求)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>用量與成本</h2>
+  <h3>Claude 子代理</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th class="num">CG</th><th class="num">email</th><th class="num">作文</th><th class="num">數學</th><th class="num">時事</th><th class="num">合計 tokens</th><th class="num">合計耗時</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model opus">Opus 5.5</span></td><td class="num">95,886</td><td class="num">105,729</td><td class="num">64,898</td><td class="num">103,935</td><td class="num">76,903</td><td class="num">447,351</td><td class="num">1,027.6 秒</td></tr>
+      <tr><td><span class="model sonnet">Sonnet 5.5</span></td><td class="num">76,848</td><td class="num">75,639</td><td class="num">61,828</td><td class="num">102,079</td><td class="num">73,728</td><td class="num">390,122</td><td class="num">590.7 秒</td></tr>
+    </tbody>
+  </table></div>
+  <h3>OpenRouter API (費用為 OpenRouter 回報的實際值)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>模型</th><th class="num">CG</th><th class="num">email</th><th class="num">作文</th><th class="num">數學</th><th class="num">時事</th><th class="num">合計 (USD)</th><th class="num">輸入／輸出 tokens</th></tr></thead>
+    <tbody>
+      <tr><td><span class="model g4a">Gemini 4 Argon</span></td><td class="num">0.0907</td><td class="num">0.0279</td><td class="num">0.0158</td><td class="num">0.1040</td><td class="num">0.0545</td><td class="num">0.2929</td><td class="num">29,476／23,394</td></tr>
+      <tr><td><span class="model muse">Muse Wonder</span></td><td class="num">0.1134</td><td class="num">0.1037</td><td class="num">0.0868</td><td class="num">0.3899</td><td class="num">0.0919</td><td class="num">0.7858</td><td class="num">36,955／31,899</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>子代理的 tokens 是系統回報的單一總數，內含 Claude Code 本身的系統提示與工具定義，不能和 API 的 tokens 直接比較，也沒有費用資訊。</li>
+    <li>Gemini 4 Argon 回報的思考 tokens 全部為 0，無法確認 medium 思考是否生效；Muse 有正常回報，數學題思考了 14,304 tokens。</li>
+    <li>Muse 的單價是 Gemini 的兩倍，又在數學題花了大量思考，總費用約為 Gemini 的 2.7 倍。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>觀察與建議</h2>
+  <ul>
+    <li><b>Opus 5.5</b> 在需要查證 (email) 與嚴謹推導 (數學) 的題目最穩，代價是最慢、最耗 token。</li>
+    <li><b>Muse Wonder</b> 是這次的黑馬：沒有工具也能在數學題找到最佳結構，寫作類題目篇幅控制最好，且不編造。弱點是 HTML 版面細節。</li>
+    <li><b>Gemini 4 Argon</b> 視覺設計強、便宜，但推理題會停在次佳解，篇幅指示容易被忽略，對照片的判讀有過度肯定的傾向。</li>
+    <li><b>Sonnet 5.5</b> 各題都中上，速度快；這次的扣分多來自細節錯誤 (注音、報關措辭) 與 PDF 讀取環境限制。</li>
+    <li>若要讓比較更公平，下一輪可以讓 Claude 兩個模型也走 API 版 prompt (不給工具)，並把作文試卷改成三張頁面圖片，統一四個模型的讀圖條件。</li>
+  </ul>
+</section>
+
+<footer>
+  原始輸出位於 <code>261014 雲端API端口調用/測試結果/</code> 各模型資料夾；逐筆用量見 <code>子代理token用量.md</code> 與 <code>API用量紀錄.md</code>。
+</footer>
+
+</div>

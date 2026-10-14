@@ -1,0 +1,1 @@
+Generating a single HTML file with embedded CSS for a double-sided A6 postcard using relative image paths and Lucide icons without fabricating content.Choosing horizontal A6 orientation to reduce cropping loss and setting object-position for the portrait crop.
