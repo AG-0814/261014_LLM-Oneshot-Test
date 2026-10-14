@@ -1,0 +1,7 @@
+**Polishing image dimensions**
+
+I need to polish an HTML landscape image by cropping it from 1600x900 to a 148x105 size, maintaining a ratio of 1.409. The width should be 1269, and I want to keep the focus on the face and the sword candle in the center. It’s all about getting that crop just right while ensuring those important elements stay visible! Let’s make sure to balance everything accordingly.**Designing layout elements**
+
+I'm working on a design layout where I need full-bleed overlay titles placed at the bottom with a dark fade. The logo should go on the left, avoiding the center where the hood is. I'm thinking about positioning the face source at x800 y270, and the card at x74 y31.5. For the typography, I want 24 mm height at the bottom, using a mix of English and Chinese fonts while keeping it safe and readable. I’ll match the headers in ivory and navy, applying a modest faction stamp in black.**Refining card layout**
+
+I need to consider whether to avoid labels outside of the cards. It looks like front and back labels can be utilized in the UI. The actual print dimensions should be combined to a height of 220mm with a size of 168mm by 236mm, including margins and gaps. I want to ensure that everything fits correctly without unnecessary padding. I’ll set the margins, align logos on a white background, and adjust the header and footer for an organized layout while keeping everything spaced appropriately.

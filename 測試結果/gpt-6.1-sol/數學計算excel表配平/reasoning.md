@@ -1,0 +1,3 @@
+**Calculating number combos**
+
+I’m working through some number combinations. Adding them gives me 8072. I notice a 40 gap, so I’m looking at other number distributions like 23, 22, and 24, aiming for a maximum of 8280. If I do the math right, there's a difference of 170, which might be achievable. It looks like I can reach some interesting combinations with 22 or 24 alongside different multipliers. Let’s keep exploring this!

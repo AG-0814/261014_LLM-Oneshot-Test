@@ -1,0 +1,55 @@
+{
+  "id": "gen-1791977422-I23GE6CF5jhizkEXyyzw",
+  "object": "chat.completion",
+  "created": 1791977422,
+  "model": "openai/gpt-6.1-sol",
+  "provider": "OpenAI",
+  "system_fingerprint": null,
+  "service_tier": "default",
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "completed",
+      "message": {
+        "role": "assistant",
+        "content": "【答題卷正面】\n一、問題 (一)\n女主角與小豬對視，使牠成為能喚起共感與倫理責任的「有臉」生命，因而不忍食用；魚不與她對視，未引發同樣的情感連結，遂成為替代食物。\n\n一、問題 (二)\n班級群組曾有人把同學報告時結巴的片段製成貼圖。隔著螢幕，他被簡化成一個笑點；我雖未轉傳，卻以「只是玩笑」說服自己不必制止。\n\n隔天，他在講臺前緊攥講義，低聲問老師能否不再上臺。我才明白，「臉」不只是可見的五官，也包含顫抖的聲音與難以言說的羞辱。他的脆弱一直存在，是我用群組的熱鬧遮住了它。\n\n我私下向他道歉，詢問他希望如何處理，再於群組請大家停止轉傳、刪除貼圖，並陪他向老師求助。這不是替他決定一切，而是讓他的意願重新被聽見。\n\n我認為，選擇是否承擔責任，不能只看自己有沒有親手傷害對方，也應思考沉默是否延續傷害。共感常偏向熟悉、可親的人，因此更須以尊重補足情感的盲點。即使對方沒有顯露痛苦，也不代表他不會受傷；不能等一張「臉」哭泣，才承認自己有回應的責任。\n\n【答題卷背面】\n二、隔在我們之間的種種\n父親敲門時，我總先把考卷翻過去。紙張摩擦桌面的聲音很輕，卻像一道門閂，把尚未開始的對話鎖住。\n\n升上高中後，他最常問的是：「今天讀了多少？」我最常回答的是：「你只在乎成績。」他皺眉，我戴上耳機。隔在我們之間的，起初是一張考卷，後來是每句話裡預先藏好的敵意。我認定他的詢問是審判；他則把我的沉默看成敷衍。即使只是叫我吃飯，我也能聽出責備。\n\n一次模擬考失常，他看著分數說：「這樣以後怎麼辦？」我脫口而出：「你的人生又不是我的人生！」門被我甩上，晚餐也留在桌上。那時我以為，關上門就是守住自己，卻沒有發現，我也把求助的路一起關掉了。\n\n幾天後，父親請我幫忙填寫工作表單。他瞇著眼，一個字一個字核對，填錯了便急忙擦掉。我第一次注意到，他面對陌生事物時，也像我面對考卷那樣緊張。他說，年輕時因學歷錯失過工作機會，所以總怕我將來吃同樣的苦。原來「以後怎麼辦」裡，有他無法重來的遺憾，也有不知道如何說出口的擔心。\n\n但理解他的恐懼，不表示那些話就不再刺痛。我也開始明白，自己說「你只在乎成績」，其實是在問：「如果我考不好，你還會肯定我嗎？」我們都把最柔軟的需要，包在最堅硬的語氣裡，再責怪對方不肯接住。\n\n那晚，我主動攤開考卷，告訴他哪些地方不懂，也說：「我願意跟你談進度，但你先問我累不累，好不好？」他沉默片刻，問我是不是最近睡得太少。我們約好每週談一次讀書安排，不必每天追問。我也答應不再用「沒事」擋掉所有關心。那場談話沒有解決所有分歧，卻讓考卷第一次成為一起面對的問題，而不是判定我的證據。\n\n如今父親偶爾仍會催促，我也還是會不耐煩。但在反駁之前，我願意多問一句：「你在擔心什麼？」隔閡不會因愛而自動消失；我們得練習把擔憂說成擔憂，把需要說成需要。門仍在那裡，只是我不再一聽見敲門聲，就急著上鎖。",
+        "refusal": null,
+        "reasoning": null,
+        "reasoning_details": [
+          {
+            "type": "reasoning.encrypted",
+            "data": "gAAAAABqz2fUWk5BEEY_iuiDh_hmovKH7m7BkiqrkuCLF2H23EbE6fG1VmyMNxHYqrmT1VeorQw177IqCO_5I-ljp0WemuO_oELZNkJWODOX7xjQ_2dhUKOfx_SYQkrfkMmuytw8x0O7TTqxccoz7NN_mtIprjv_l7ee25w-9UGJma0opgO-vLGTNKpvrawE_Jizp35lOl3ZXn88Wz7WEx0gEKqS9NcUSY7aUd7o_4uTbexsOLE0nk1PQHHNq2dZYj3OmSewUN36YJa_fR8uPVJMMu6cDTfSHvqVnCL2bpQ6CmeIA_LmXbXPhdILhG7gQUYpOE6bxnBU2huWTupSp-80wCvRLx7osfdjE0jOMHyutM_qXyRVpKRmAeU1oP9i332d9E3LN7Et5VpBvDbKmVnXGp45wPmPMXLdeelMvsEjo3T2wbnS1CbMxf8oM8v7aIu5Gx-yRjsvhyMgQ0Jg2qsDQvBRgC_MgwZMeLoa-cL3VpG7L5DafHXlV21hwJaB54iF6AGh7kFNhBfOao1lCkDhy6xo42PDPIu6CmPbAbPDDCV-dCdsK6uZARQScAd870-mR_kmb1RYlZkhvrs1cdENa00uO5QXMw2mAKaxnb2Ce5TUl-bCOxgmVBs9aM9m2oJTSMenFzhKAFmkZhoZP-I9QamAXb6OsAZE9XU6xc1rEYgjhK1DUhWsyKxFQqbGa9MgmrHpplQswcH3KK93CnIVE_d0wrRTaH_Ex1x8qqjsJDel782fuKOpyEXJUDjRgkxpnkTGjuzwgyBvjeON-JzOzKzyZJ4ltQxkuCYcrx2fZCdNWnCpzo5SGyzVkHxdKRMN0hrRmXT4-oDKAzf_E8u2uriYOP-h-Uf3xrKU1r6pZs7q928beEVBd04R4KJvEXdieXOsQlqbPZFzrhvKAAClRMrQyceJQqU9MQv1Q6qFNPPRIP0Fb3kjYUReOQ5oDlZo_IP0SNcWNoboLhSrnk3zneSJU-hrJsXdcilfy0We1NeUDUIrJaGpUsDMpp03mPMX6ktMn47tD_pOgThNVxQ1uKYqDmhe5BWqE4Ow7scC9JTCUMQsEoOC1sXEvhXrHSJUMysojmMecx7Z6Eqmbdk_EocGhx-Bed80RC-HJx90gRbadfSQQKKX4uvrPUKyhu4KCeTkVMcbvYQ4qHWkjksLiRw10qFLora7X8nVY5bdkFw7tDTEWT66ooHNZ9_BXjz5LfsKPww_8-Y_ZGWRT_zHBK_EWyCndHC_Q-ACNpG_zGtCNnGqEz4L0OZOwRyvoOcKIrvJfBrNomiSgZwmuGD-31I3xvM-QBVDt8X6NTmgLnAWIXHDffTyvuy-6JQpCaZH6QxBc3548Nd0rTR-XFWsQkriRcu7QMF_lPTTZA0aE3N4lM8n6qNnsxVW_kbK9pdz0ABJd47NLKGQeD-fv7C8GG6NmMVLR9VyDiPbjNtjzW6EIkcwhFRB7J0kP2FddL5COh8yZHPc5_PNeGd8TnYjZyrLLoRTNXDfa1gsKpMzOP8jv_v5TxjWNMhr_qDgnV_BGszdN1pCQTFIgzfmSThQQVYc6tgAvaI9g6QMhZkgLOU98Lt532mnKRmOKMhegubxTHecsPhGgl3rXZhVQifkh07bBAZZgQfkjxSdorWIlzHay9Zqyxe5899delBDq-usCPD4LU39v9h1Z04kl4Zoc4XxHhivpRtYqVVcO15UcGR0j9BpszTYvlL-2HojlFgckoHO4PJn1MYMWjadjwHrD9T-IaL3KxBHlR6J7OGr7ELiXFAoEfBHxQBNjB0HogkKZ8DWfkoEtN_IC6UXNp08Lz7yWsKyZ1DirO_z9bilJ-8-VqGIsmCiKhlORugNsWM1WqlJ-lKaofvW6lN4rpnKLlCk8eQ_iRpfBPTW9ec8o-itvVYQ9AIOXbmZ17KiWW2ZG7XzonkkvZx7B60ufRXPswX__SbW1cTh9OGP0eo6X0Sl-_QaknkBcyjM5Rh_YKkDXYJgfrL-YzDi6D3AygvgMV7hCDwPFn6QCamCjguFHXX4s8y0lzegv6Nt3xmXicSlbCOAQRfk54EslrE0Rv2o-2tx9J_wI-zjLCaF1VBAPTt9GNAgfgv823LR90Mu52R5PFjUlzxADdg-P8K5sPGpp_nq4xAOXbDbPm13r1rFExiz3I6Rg3DBc9in-3yrvIbxngcw9q6yvpKE7Ot-Z_W9skaALmQFbZMr5a07z0QpH8UjY8Q7l5VgtID272oC8wYKgc8SJIvpVykMyw8PCGgLbTojyxeubc3DmTXAUOULmQKwMqPvnfFwUFQTU6OVfI_Y66PnQyHNn4Cn_59oTXugWwzPD4H41eoYfHIlN6RJCHxhVHnCzHixzPFa0dgAVCh5mBT6S8PdnETpKwMgACiJQMKfg8S8hqQVF3Gw4t1kfS3ScXqq60PW7V0Cc7LkqWsEC0xS4k5ALbl60QPSq5b4xv28Gua8TfREWly0OGkSp5g_YkH8eKNViwM2aUcZIzogC0toNsn0oJkdlEFyqMWdrarZ296oK-48tJA17zyzO2saFUcQ5TWZ2AkFVx_VdZLbl8GF6C15QszSZC1khNeA7EuvOoC9vKAUs9cTCKCMYDk2UV6tlNcQ2BO-FY5bAQk_fS7L4HseiXvsJg0k3xfLbpwR_KLAk722f2VgjldO8Tx_eZsM3ShgeeRSoR49668_rjYvTeZMmbwGOoW2KA67Q-zAwbJoZTyF1HZdNHRTxLwSfgoIGJSqV_vflhwoBFeZPqqg7e31XBhzDAdE9QIKVWW_qV8WqMzbXHsafRwV1iAV1Up9xTlS9jmW-8ILw2dyeqv4J_cCc39a2R202fhKTWz1MKCkqJBB0S6Fvdn8f6auFAW2c1XBmPL8mOY0Osaa2kKu3bmME0vk2EbtxHzUFnns5B0gw-Mn7DxVxAkFU8q0ALkzt8uAguJ5bmbMbWwOC3hB0EJGyFAyRn9vp1jj1e6ucMfyhM2tzrzKfLwr3u8H55YZSNl0h0k3vYEYIIlW8JJehZ_0.eyJlbmRwb2ludF9zbHVnIjoib3BlbmFpL2dwdC02LjEtc29sLTIwMjYwOTI5fG9wZW5haSJ9",
+            "format": "openai-responses-v1",
+            "id": "rs_0032102de3c7b413016acf67d0a86487d1856cac1845800403",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 6631,
+    "completion_tokens": 1187,
+    "total_tokens": 7818,
+    "cost": 0.028446,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 6628,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.028446,
+      "upstream_inference_prompt_cost": 0.016576,
+      "upstream_inference_completions_cost": 0.01187
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 115,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<title>燭騎士 薇薇安娜・德羅斯特 明信片</title>
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<style>
+  @page { size: 105mm 300mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #2a2d3a;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 10mm; padding: 10mm 0;
+    font-family: "Noto Serif TC", "Source Han Serif TC", "PMingLiU", serif;
+  }
+  .card {
+    width: 105mm; height: 148mm;
+    position: relative; overflow: hidden;
+    box-shadow: 0 2mm 6mm rgba(0,0,0,.5);
+  }
+
+  /* ========== 正面 ========== */
+  .front { background: #0e1022; color: #f3ead6; }
+  .front .photo {
+    position: absolute; inset: 0;
+    background: url("cd4ab176da252b642ebfac2074fb57f1702338129.png") no-repeat;
+    /* 1600x900 → 高度 148mm 時寬約 263mm；聚焦臉部與長槍光芒 */
+    background-size: auto 100%;
+    background-position: 47% 50%;
+  }
+  .front .shade-top {
+    position: absolute; left: 0; right: 0; top: 0; height: 30mm;
+    background: linear-gradient(to bottom, rgba(8,10,25,.78), transparent);
+  }
+  .front .shade-bot {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 44mm;
+    background: linear-gradient(to top, rgba(8,10,25,.92), rgba(8,10,25,.55) 55%, transparent);
+  }
+  .front .frame {
+    position: absolute; inset: 3mm;
+    border: .25mm solid rgba(232,200,130,.75);
+    pointer-events: none;
+  }
+  .front .frame::before {
+    content: ""; position: absolute; inset: 1mm;
+    border: .12mm solid rgba(232,200,130,.35);
+  }
+  .corner { position: absolute; width: 4mm; height: 4mm; background: #e8c882; transform: rotate(45deg); }
+  .corner.tl { top: 1mm; left: 1mm; } .corner.tr { top: 1mm; right: 1mm; }
+  .corner.bl { bottom: 1mm; left: 1mm; } .corner.br { bottom: 1mm; right: 1mm; }
+  .front .logo-ak {
+    position: absolute; top: 7mm; left: 8mm; width: 22mm;
+    filter: drop-shadow(0 0 1mm rgba(0,0,0,.7));
+  }
+  .front .event {
+    position: absolute; top: 8mm; right: 8mm;
+    text-align: right; font-size: 2.4mm; letter-spacing: .5mm;
+    color: #e8c882; text-shadow: 0 0 1.5mm #000;
+  }
+  .front .event small { display: block; font-size: 1.8mm; color: #d6d9ee; letter-spacing: .3mm; margin-top: .6mm; font-family: Georgia, serif; }
+  .front .title { position: absolute; left: 8mm; right: 8mm; bottom: 8mm; }
+  .front .rank {
+    display: flex; align-items: center; gap: 1.5mm;
+    font-size: 2.5mm; letter-spacing: .8mm; color: #e8c882;
+  }
+  .front .rank i { width: 3mm; height: 3mm; }
+  .front .rank .line { flex: 1; height: .15mm; background: linear-gradient(90deg, #e8c882, transparent); }
+  .front h1 {
+    font-size: 8.4mm; font-weight: 900; letter-spacing: 1.2mm; line-height: 1.15;
+    margin-top: 1mm; text-shadow: 0 0 2mm rgba(0,0,0,.8);
+  }
+  .front .en {
+    font-family: Georgia, "Times New Roman", serif; font-style: italic;
+    font-size: 3.4mm; color: #f1dca8; letter-spacing: .3mm; margin-top: .5mm;
+  }
+  .front .intro {
+    font-size: 2.3mm; line-height: 1.65; margin-top: 2.5mm; color: #e3e5f2;
+    letter-spacing: .15mm; max-width: 78mm;
+  }
+  .front .emblem {
+    position: absolute; right: 7mm; bottom: 7mm; width: 14mm; opacity: .8;
+  }
+
+  /* ========== 背面 ========== */
+  .back {
+    background: #f1e8d4;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,.55), transparent 50%),
+      radial-gradient(circle at 85% 90%, rgba(160,120,60,.15), transparent 55%);
+    color: #2b2a3d;
+  }
+  .back .border {
+    position: absolute; inset: 4mm; border: .25mm solid #2b2f55;
+  }
+  .back .border::after {
+    content: ""; position: absolute; inset: 1mm; border: .12mm solid rgba(43,47,85,.4);
+  }
+  .back .watermark {
+    position: absolute; left: 50%; top: 50%; width: 70mm;
+    transform: translate(-50%,-50%); opacity: .13;
+    filter: sepia(.4);
+  }
+  .back .head {
+    position: absolute; top: 8mm; left: 9mm; right: 9mm;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .back .head .lt { display: flex; align-items: center; gap: 2mm; }
+  .back .head .lt img { width: 11mm; filter: invert(1) brightness(.2) sepia(1) hue-rotate(190deg) saturate(2); }
+  .back .head .lt b { font-size: 3.2mm; letter-spacing: .6mm; }
+  .back .head .lt span { display: block; font-size: 1.8mm; letter-spacing: .5mm; font-family: Georgia, serif; color: #6a6a85; }
+  .back .head .pc { font-family: Georgia, serif; font-size: 3mm; letter-spacing: 1mm; color: #8a2f3c; }
+  .stamp {
+    position: absolute; top: 17mm; right: 9mm; width: 20mm; height: 24mm;
+    border: .3mm dashed #8a2f3c; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1mm;
+    color: #8a2f3c; font-size: 2mm; letter-spacing: .3mm; text-align: center;
+  }
+  .stamp i { width: 5mm; height: 5mm; }
+  .postmark {
+    position: absolute; top: 20mm; right: 25mm; width: 20mm; height: 20mm;
+    border: .25mm solid rgba(43,47,85,.45); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-family: Georgia, serif; font-size: 1.7mm; line-height: 1.5; letter-spacing: .2mm;
+    color: rgba(43,47,85,.55); transform: rotate(-12deg);
+  }
+  .message {
+    position: absolute; left: 9mm; top: 17mm; width: 42mm;
+  }
+  .message .label { display: flex; align-items: center; gap: 1mm; font-size: 2.2mm; letter-spacing: .5mm; color: #8a2f3c; margin-bottom: 1.5mm; }
+  .message .label i { width: 3mm; height: 3mm; }
+  .message .ln { height: 6mm; border-bottom: .15mm solid rgba(43,47,85,.45); }
+  .divider {
+    position: absolute; left: 53mm; top: 44mm; bottom: 46mm; width: 0;
+    border-left: .15mm solid rgba(43,47,85,.4);
+  }
+  .addr {
+    position: absolute; left: 9mm; right: 9mm; top: 54mm;
+  }
+  .addr .row { display: flex; align-items: flex-end; gap: 1.5mm; height: 8mm; border-bottom: .15mm solid rgba(43,47,85,.5); font-size: 2.2mm; color: #6a6a85; letter-spacing: .4mm; }
+  .addr .row i { width: 3mm; height: 3mm; margin-bottom: 1mm; }
+  .zip { display: flex; gap: 1.5mm; margin-bottom: 3mm; align-items: center; font-size: 2.2mm; color: #6a6a85; letter-spacing: .4mm; }
+  .zip span.b { width: 5mm; height: 5.5mm; border: .2mm solid #8a2f3c; }
+  .quotes {
+    position: absolute; left: 9mm; right: 9mm; bottom: 24mm;
+    border-top: .2mm solid rgba(43,47,85,.4); padding-top: 2.5mm;
+  }
+  .quotes .q { display: flex; gap: 1.5mm; margin-bottom: 2mm; }
+  .quotes .q i { width: 3mm; height: 3mm; color: #8a2f3c; flex: none; margin-top: .4mm; }
+  .quotes .q div { font-size: 2mm; line-height: 1.5; color: #3a3a55; }
+  .quotes .q em { display: block; font-family: Georgia, serif; font-size: 2.2mm; color: #1d2040; }
+  .quotes .q small { font-size: 1.7mm; color: #7a7a92; letter-spacing: .1mm; }
+  .back .foot {
+    position: absolute; left: 9mm; right: 9mm; bottom: 8mm;
+    display: flex; align-items: center; justify-content: space-between; gap: 3mm;
+  }
+  .back .foot .badges { display: flex; gap: 2mm; }
+  .back .foot .badges img { width: 14mm; height: 14mm; object-fit: contain; }
+  .back .foot .note { flex: 1; text-align: right; font-size: 1.9mm; line-height: 1.6; color: #55557a; letter-spacing: .2mm; }
+  .back .foot .note b { color: #8a2f3c; font-weight: 700; }
+
+  @media print {
+    body { background: none; padding: 0; gap: 0; }
+    .card { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 正面 -->
+<section class="card front">
+  <div class="photo"></div>
+  <div class="shade-top"></div>
+  <div class="shade-bot"></div>
+  <div class="frame">
+    <div class="corner tl"></div><div class="corner tr"></div>
+    <div class="corner bl"></div><div class="corner br"></div>
+  </div>
+  <img class="logo-ak" src="Logo_明日方舟.png" alt="明日方舟">
+  <div class="event">崔林特爾梅之金<small>EVENT CG</small></div>
+
+  <div class="title">
+    <div class="rank"><i data-lucide="flame"></i>燭騎士・LEITHANIEN<span class="line"></span></div>
+    <h1>薇薇安娜・德羅斯特</h1>
+    <div class="en">Viviana Droste</div>
+    <p class="intro">燭騎士薇薇安娜·德羅斯特，言語無法形容她的美好，只有她映照光輝的眼眸令人沉醉。今夜，金盞花為她盛開。</p>
+  </div>
+  <img class="emblem" src="20210120051634!Logo_莱塔尼亚.png" alt="萊塔尼亞">
+</section>
+
+<!-- 背面 -->
+<section class="card back">
+  <div class="border"></div>
+  <img class="watermark" src="20210120051634!Logo_莱塔尼亚.png" alt="" style="filter: invert(1) sepia(1) hue-rotate(190deg) saturate(2);">
+
+  <div class="head">
+    <div class="lt">
+      <img src="20210120051634!Logo_莱塔尼亚.png" alt="">
+      <div><b>萊塔尼亞</b><span>LEITHANIEN</span></div>
+    </div>
+    <div class="pc">POST CARD</div>
+  </div>
+
+  <div class="message">
+    <div class="label"><i data-lucide="pen-line"></i>留言 MESSAGE</div>
+    <div class="ln"></div><div class="ln"></div><div class="ln"></div><div class="ln"></div>
+  </div>
+
+  <div class="stamp"><i data-lucide="flame"></i>貼郵票處<br>STAMP</div>
+  <div class="postmark">LEITHANIEN<br>★ 金盞花 ★<br>TRINTERMEZZO</div>
+
+  <div class="addr">
+    <div class="zip">郵遞區號 <span class="b"></span><span class="b"></span><span class="b"></span><span class="b"></span><span class="b"></span></div>
+    <div class="row"><i data-lucide="map-pin"></i>地址 ADDRESS</div>
+    <div class="row"></div>
+    <div class="row"><i data-lucide="user"></i>收件人 TO</div>
+  </div>
+
+  <div class="quotes">
+    <div class="q"><i data-lucide="quote"></i>
+      <div><em>"I listen, to this passing silence."</em><small>我愿倾听此刻的沉默。</small></div></div>
+    <div class="q"><i data-lucide="quote"></i>
+      <div><em>"Let time rest upon this unlit night."</em><small>让时间停在这个无烛的夜晚吧。</small></div></div>
+    <div class="q"><i data-lucide="quote"></i>
+      <div><em>"Mein Tag war heiter, glücklich meine Nacht."</em><small>......我的白昼晴朗，我的夜晚幸福。</small></div></div>
+  </div>
+
+  <div class="foot">
+    <div class="badges">
+      <img src="pasted-1788277232350-0.png" alt="Final Line">
+      <img src="pasted-1788277241690-0.png" alt="The Unforeseeable">
+    </div>
+    <div class="note"><b>Viviana Droste</b><br>《明日方舟》「崔林特爾梅之金」活動 CG</div>
+  </div>
+</section>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
