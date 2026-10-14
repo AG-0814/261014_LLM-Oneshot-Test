@@ -16,7 +16,7 @@
 
 思考強度一律設為 medium。數字以程式重算，事實對照新聞原文。另外補測了 Sonnet 5.5 走 OpenRouter API 的 CG 明信片題 (`sonnet-5.5_API`)，未列入總結表。
 
-## 總結
+## AI 評分總結
 
 | 題目 | Opus 5.5 | Sonnet 5.5 | Gemini 4 Argon | Muse Wonder | GPT-6.1 Sol |
 |---|---|---|---|---|---|
