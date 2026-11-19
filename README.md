@@ -76,6 +76,8 @@ AI 評分來自上方比較報告；人類排序來自評審的主觀閱讀 ([�
   gpt-6.1-sol/<題名>/          第二輪補測，部分題目附 reasoning.md
   sonnet-5.5_API/CG圖明信片設計/  Sonnet 5.5 走 API 的補測 (僅 CG 題)
   gemini-4-carbon/<題名>/      第三輪追評；數學題另附 16k 截斷版 answer_16k截斷.md
+  gpt-6.2-sol/<題名>/          第四輪追評 (2026-11-19)
+  gemini-4-neon/<題名>/        第四輪追評 (2026-11-19)；數學題 32k 截斷，只有 answer_32k截斷.md
   數學計算excel表配平/README.md  數學題：各模型主方案與實際採用配法的對照
   比較報告/index.html          六模型橫評報告
   比較報告/用戶主觀橫評.md      人類主觀評價全文

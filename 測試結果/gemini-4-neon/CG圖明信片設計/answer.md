@@ -1,0 +1,858 @@
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>明日方舟 A6 明信片 — 燭騎士 薇薇安娜‧德羅斯特</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --card-w: 148mm;
+      --card-h: 105mm;
+      --gold: #d6b67c;
+      --gold-deep: #a9864c;
+      --crimson: #7f2431;
+      --ink: #1a1d26;
+      --ink-muted: #575b66;
+      --paper: #f7f3eb;
+      --night: #121520;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #1d1f26;
+      color: #e6e2d8;
+      font-family: "Noto Serif TC", serif;
+      min-height: 100vh;
+      padding: 16mm 10mm 22mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12mm;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .sheet-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5mm;
+    }
+
+    .sheet-label {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 9pt;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(230, 226, 216, 0.55);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sheet-label svg {
+      width: 11px;
+      height: 11px;
+      color: var(--gold);
+    }
+
+    /* 基礎 A6 橫式明信片容器 (148 × 105 mm) */
+    .postcard {
+      width: var(--card-w);
+      height: var(--card-h);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.35);
+      background: var(--night);
+      flex-shrink: 0;
+    }
+
+    /* ================= 正面 FRONT ================= */
+    .front-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* 完整保留頭頂鹿角、角色神情、斜向光劍與右下方燭火 */
+      object-position: 50% 42%;
+      display: block;
+    }
+
+    /* 局部輕微漸層，僅提升角落文字可讀性，不壓暗主圖光彩 */
+    .front-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(12, 14, 22, 0.48) 0%,
+          rgba(12, 14, 22, 0) 24%,
+          rgba(12, 14, 22, 0) 64%,
+          rgba(12, 14, 22, 0.72) 100%
+        ),
+        radial-gradient(
+          ellipse 58% 48% at 14% 92%,
+          rgba(12, 14, 22, 0.65) 0%,
+          rgba(12, 14, 22, 0) 100%
+        );
+      pointer-events: none;
+    }
+
+    /* 典雅香檳金細框 */
+    .front-frame {
+      position: absolute;
+      inset: 4.5mm;
+      border: 0.25mm solid rgba(214, 182, 124, 0.48);
+      pointer-events: none;
+    }
+
+    .front-frame::before,
+    .front-frame::after {
+      content: "";
+      position: absolute;
+      width: 3.2mm;
+      height: 3.2mm;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+
+    .front-frame::before {
+      top: -0.4mm;
+      left: -0.4mm;
+      border-width: 0.45mm 0 0 0.45mm;
+    }
+
+    .front-frame::after {
+      bottom: -0.4mm;
+      right: -0.4mm;
+      border-width: 0 0.45mm 0.45mm 0;
+    }
+
+    .front-overlay {
+      position: absolute;
+      inset: 7.2mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    /* 正面頂部：明日方舟 Logo、活動標註與萊塔尼亞徽章 */
+    .front-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .front-brand {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+
+    .front-ak-logo {
+      height: 6.2mm;
+      width: auto;
+      opacity: 0.92;
+      filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.55));
+    }
+
+    .front-divider {
+      width: 0.22mm;
+      height: 5.5mm;
+      background: rgba(214, 182, 124, 0.65);
+    }
+
+    .front-event {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6mm;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);
+    }
+
+    .front-event-zh {
+      font-size: 6.8pt;
+      letter-spacing: 0.22em;
+      color: #f3ece0;
+      font-weight: 400;
+    }
+
+    .front-event-en {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 6.4pt;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .front-faction-logo {
+      width: 9.5mm;
+      height: 9.5mm;
+      object-fit: contain;
+      opacity: 0.88;
+      filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.65));
+    }
+
+    /* 正面底部：角色名與德文台詞，避開中央人物與右下方燭火 */
+    .front-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .front-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7mm;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+    }
+
+    .front-epithet {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5mm;
+      font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+      font-size: 6.6pt;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .front-epithet svg {
+      width: 9px;
+      height: 9px;
+      color: var(--gold);
+    }
+
+    .front-name-en {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 21pt;
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: 0.04em;
+      color: #fbf8f1;
+    }
+
+    .front-name-zh {
+      font-size: 8.6pt;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      color: rgba(247, 243, 235, 0.92);
+      margin-top: 0.4mm;
+    }
+
+    .front-quote-de {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 7.4pt;
+      letter-spacing: 0.04em;
+      color: rgba(236, 224, 200, 0.86);
+      margin-top: 1.2mm;
+    }
+
+    .front-corner-note {
+      text-align: right;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 6.8pt;
+      line-height: 1.35;
+      color: rgba(243, 236, 224, 0.78);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+      max-width: 38mm;
+    }
+
+    /* ================= 背面 BACK ================= */
+    .postcard--back {
+      background-color: var(--paper);
+      background-image: radial-gradient(
+        rgba(169, 134, 76, 0.08) 0.5px,
+        transparent 0.5px
+      );
+      background-size: 3.2mm 3.2mm;
+      color: var(--ink);
+    }
+
+    /* 背面極淡萊塔尼亞浮水印 (白圖轉深色低透明) */
+    .back-watermark {
+      position: absolute;
+      right: 14mm;
+      bottom: 8mm;
+      width: 44mm;
+      height: 44mm;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.038;
+      pointer-events: none;
+    }
+
+    .back-frame {
+      position: absolute;
+      inset: 4.5mm;
+      border: 0.25mm solid rgba(169, 134, 76, 0.45);
+      pointer-events: none;
+    }
+
+    .back-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 7.2mm 8.2mm 7mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* 背面頁首 */
+    .back-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5mm;
+      margin-bottom: 2.5mm;
+    }
+
+    .back-header-line {
+      flex: 1;
+      height: 0.2mm;
+      background: rgba(169, 134, 76, 0.35);
+    }
+
+    .back-header-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.36em;
+      color: var(--gold-deep);
+      display: flex;
+      align-items: center;
+      gap: 1.8mm;
+    }
+
+    .back-header-title svg {
+      width: 9px;
+      height: 9px;
+      color: var(--crimson);
+    }
+
+    /* 背面左右主體 */
+    .back-columns {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 0.25mm 54mm;
+      gap: 0 5.5mm;
+      min-height: 0;
+    }
+
+    .back-v-divider {
+      background: linear-gradient(
+        to bottom,
+        rgba(169, 134, 76, 0.12),
+        rgba(169, 134, 76, 0.45) 18%,
+        rgba(169, 134, 76, 0.45) 82%,
+        rgba(169, 134, 76, 0.12)
+      );
+      width: 0.25mm;
+      height: 100%;
+    }
+
+    /* 左欄：官方介紹、留言區、模組徽章與台詞 */
+    .back-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 0;
+    }
+
+    .back-intro {
+      border-left: 0.55mm solid var(--crimson);
+      padding-left: 2.8mm;
+      font-size: 6.5pt;
+      line-height: 1.65;
+      color: #2f333e;
+      letter-spacing: 0.04em;
+    }
+
+    .back-message-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5.8mm;
+      padding: 3.5mm 0 2.5mm;
+    }
+
+    .back-message-label {
+      display: flex;
+      align-items: center;
+      gap: 1.4mm;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 6.4pt;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(87, 91, 102, 0.72);
+      margin-bottom: -2.2mm;
+    }
+
+    .back-message-label svg {
+      width: 9px;
+      height: 9px;
+      color: var(--gold-deep);
+    }
+
+    .write-line {
+      border-bottom: 0.2mm dashed rgba(169, 134, 76, 0.42);
+      height: 1px;
+    }
+
+    /* 左下角模組徽章 + 台詞 */
+    .back-module-box {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      padding-top: 2mm;
+      border-top: 0.2mm solid rgba(169, 134, 76, 0.28);
+    }
+
+    .module-medallion {
+      width: 15.5mm;
+      height: 15.5mm;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 45%, #232738 0%, #10121b 100%);
+      border: 0.35mm solid var(--gold-deep);
+      padding: 1mm;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(26, 29, 38, 0.16);
+      overflow: hidden;
+    }
+
+    .module-medallion img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .module-quotes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7mm;
+    }
+
+    .module-quote-en {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 6.8pt;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+
+    .module-quote-zh {
+      font-size: 6pt;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* 右欄：郵票框、郵戳、收件人地址與底部資訊 */
+    .back-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .postal-top {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      gap: 3.5mm;
+    }
+
+    /* 模擬圓形郵戳 */
+    .postmark {
+      width: 18mm;
+      height: 18mm;
+      border-radius: 50%;
+      border: 0.3mm solid rgba(127, 36, 49, 0.42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2mm;
+      transform: rotate(-10deg);
+      position: relative;
+    }
+
+    .postmark-inner {
+      width: 15.2mm;
+      height: 15.2mm;
+      border-radius: 50%;
+      border: 0.2mm dashed rgba(127, 36, 49, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgba(127, 36, 49, 0.72);
+      gap: 0.4mm;
+    }
+
+    .postmark-inner svg {
+      width: 8px;
+      height: 8px;
+    }
+
+    .postmark-en {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 4.8pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+    }
+
+    .postmark-zh {
+      font-size: 4.3pt;
+      letter-spacing: 0.06em;
+    }
+
+    /* 郵票框 */
+    .stamp-box {
+      width: 20.5mm;
+      height: 25mm;
+      border: 0.28mm solid rgba(169, 134, 76, 0.65);
+      padding: 1.2mm;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stamp-inner {
+      width: 100%;
+      height: 100%;
+      border: 0.2mm dashed rgba(169, 134, 76, 0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2mm;
+    }
+
+    .stamp-logo {
+      width: 8.5mm;
+      height: 8.5mm;
+      object-fit: contain;
+      filter: brightness(0);
+      opacity: 0.18;
+    }
+
+    .stamp-text {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 5.5pt;
+      letter-spacing: 0.22em;
+      color: rgba(87, 91, 102, 0.72);
+    }
+
+    /* 收件地址線 */
+    .address-block {
+      display: flex;
+      flex-direction: column;
+      gap: 5.6mm;
+      margin-top: 2mm;
+    }
+
+    .address-row {
+      border-bottom: 0.25mm solid rgba(26, 29, 38, 0.34);
+      padding-bottom: 0.8mm;
+      display: flex;
+      align-items: baseline;
+      min-height: 3.5mm;
+    }
+
+    .address-prefix {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 8pt;
+      color: var(--gold-deep);
+      margin-right: 2mm;
+    }
+
+    .zip-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.2mm;
+      margin-top: -1.5mm;
+    }
+
+    .zip-label {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 5.5pt;
+      letter-spacing: 0.16em;
+      color: var(--ink-muted);
+      margin-right: 0.6mm;
+    }
+
+    .zip-cell {
+      width: 4.2mm;
+      height: 4.6mm;
+      border: 0.22mm solid rgba(169, 134, 76, 0.58);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    /* 右下角底部標示 */
+    .back-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 2.2mm;
+      border-top: 0.2mm solid rgba(169, 134, 76, 0.28);
+    }
+
+    .back-ak-logo {
+      height: 4.8mm;
+      width: auto;
+      filter: brightness(0);
+      opacity: 0.78;
+    }
+
+    .back-meta {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4mm;
+    }
+
+    .back-meta-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 6pt;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+    }
+
+    .back-meta-quote {
+      font-size: 5.4pt;
+      color: var(--ink-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* 列印樣式 */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+        gap: 8mm;
+      }
+      .sheet-label {
+        display: none;
+      }
+      .postcard {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 正面 FRONT -->
+  <section class="sheet-block">
+    <div class="sheet-label">
+      <i data-lucide="sparkles"></i>
+      <span>FRONT &mdash; A6 LANDSCAPE (148 &times; 105 mm)</span>
+    </div>
+    <article class="postcard postcard--front" aria-label="明信片正面">
+      <img
+        class="front-bg"
+        src="cd4ab176da252b642ebfac2074fb57f1702338129.png"
+        alt="薇薇安娜‧德羅斯特 崔林特爾梅之金 活動 CG"
+      />
+      <div class="front-vignette"></div>
+      <div class="front-frame"></div>
+
+      <div class="front-overlay">
+        <header class="front-top">
+          <div class="front-brand">
+            <img
+              class="front-ak-logo"
+              src="Logo_明日方舟.png"
+              alt="明日方舟 Logo"
+            />
+            <span class="front-divider"></span>
+            <div class="front-event">
+              <span class="front-event-zh">崔林特爾梅之金</span>
+              <span class="front-event-en">Leithanien</span>
+            </div>
+          </div>
+          <img
+            class="front-faction-logo"
+            src="20210120051634!Logo_莱塔尼亚.png"
+            alt="萊塔尼亞陣營 Logo"
+          />
+        </header>
+
+        <footer class="front-bottom">
+          <div class="front-title-group">
+            <div class="front-epithet">
+              <i data-lucide="flame"></i>
+              <span>Candle Knight &middot; 燭騎士</span>
+            </div>
+            <h1 class="front-name-en">Viviana Droste</h1>
+            <div class="front-name-zh">薇薇安娜‧德羅斯特</div>
+            <p class="front-quote-de">
+              &ldquo;Mein Tag war heiter, gl&uuml;cklich meine Nacht.&rdquo;
+            </p>
+          </div>
+
+          <p class="front-corner-note">
+            &ldquo;Let time rest upon<br />this unlit night.&rdquo;
+          </p>
+        </footer>
+      </div>
+    </article>
+  </section>
+
+  <!-- 背面 BACK -->
+  <section class="sheet-block">
+    <div class="sheet-label">
+      <i data-lucide="mail"></i>
+      <span>BACK &mdash; A6 LANDSCAPE (148 &times; 105 mm)</span>
+    </div>
+    <article class="postcard postcard--back" aria-label="明信片背面">
+      <img
+        class="back-watermark"
+        src="20210120051634!Logo_莱塔尼亚.png"
+        alt=""
+      />
+      <div class="back-frame"></div>
+
+      <div class="back-inner">
+        <header class="back-header">
+          <span class="back-header-line"></span>
+          <div class="back-header-title">
+            <i data-lucide="flame"></i>
+            <span>POSTCARD &middot; LEITHANIEN</span>
+          </div>
+          <span class="back-header-line"></span>
+        </header>
+
+        <div class="back-columns">
+          <!-- 左側：介紹句、留言區與模組徽章 -->
+          <div class="back-left">
+            <p class="back-intro">
+              燭騎士薇薇安娜‧德羅斯特，言語無法形容她的美好，只有她映照光輝的眼眸令人沉醉。今夜，金盞花為她盛開。
+            </p>
+
+            <div class="back-message-area">
+              <div class="back-message-label">
+                <i data-lucide="feather"></i>
+                <span>Message</span>
+              </div>
+              <div class="write-line"></div>
+              <div class="write-line"></div>
+              <div class="write-line"></div>
+              <div class="write-line"></div>
+            </div>
+
+            <div class="back-module-box">
+              <div class="module-medallion">
+                <img
+                  src="pasted-1788277232350-0.png"
+                  alt="薇薇安娜模組圖騰"
+                />
+              </div>
+              <div class="module-quotes">
+                <p class="module-quote-en">
+                  &ldquo;I listen, to this passing silence.&rdquo;<br />
+                  &ldquo;I wait, for that belated serenity.&rdquo;
+                </p>
+                <p class="module-quote-zh">
+                  我願傾聽此刻的沉默。／我在等待遲來的寧靜。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 中央分隔線 -->
+          <div class="back-v-divider"></div>
+
+          <!-- 右側：郵票框、郵戳與地址欄 -->
+          <div class="back-right">
+            <div class="postal-top">
+              <div class="postmark" aria-hidden="true">
+                <div class="postmark-inner">
+                  <i data-lucide="sparkles"></i>
+                  <span class="postmark-en">LEITHANIEN</span>
+                  <span class="postmark-zh">崔林特爾梅之金</span>
+                </div>
+              </div>
+              <div class="stamp-box">
+                <div class="stamp-inner">
+                  <img
+                    class="stamp-logo"
+                    src="20210120051634!Logo_莱塔尼亚.png"
+                    alt=""
+                  />
+                  <span class="stamp-text">STAMP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="address-block">
+              <div class="address-row">
+                <span class="address-prefix">To:</span>
+              </div>
+              <div class="address-row"></div>
+              <div class="address-row"></div>
+              <div class="address-row"></div>
+              <div class="zip-row" aria-label="郵遞區號">
+                <span class="zip-label">ZIP</span>
+                <span class="zip-cell"></span>
+                <span class="zip-cell"></span>
+                <span class="zip-cell"></span>
+                <span class="zip-cell"></span>
+                <span class="zip-cell"></span>
+              </div>
+            </div>
+
+            <footer class="back-footer">
+              <img
+                class="back-ak-logo"
+                src="Logo_明日方舟.png"
+                alt="明日方舟 Logo"
+              />
+              <div class="back-meta">
+                <span class="back-meta-title">VIVIANA DROSTE</span>
+                <span class="back-meta-quote">讓時間停在這個無燭的夜晚吧。</span>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
+```
+
+### 裁切與設計思路
+1. **橫式 A6 構圖與精準裁切**：原圖為 16:9 橫幅，採用橫式 A6（148×105mm）並以 `object-position: 50% 42%` 裁切，能在僅微裁左右暗部邊緣的情況下，完整保留頭頂鹿角、角色神情、斜向光劍張力以及右下方燃燒的燭火。
+2. **正面克制裝飾以凸顯原圖**：僅在四周加上極細香檳金邊框與角落微弱暗角，將《明日方舟》與萊塔尼亞 Logo 置於上方留白處，角色名與德文台詞收束於左下暗部，完全避開人物主體與光劍軌跡。
+3. **背面古典信箋與視覺延續**：背面改採溫潤米白紙色配霧金與暗酒紅細線，呈現萊塔尼亞的典雅氣質；將白色陣營與遊戲 Logo 轉為低彩度深墨色，分別融入郵票框、背景浮水印與版權角標。
+4. **模組元素的巧思運用**：選用附件2「FINAL LINE」的燭台玫瑰模組，以深夜藍圓形徽章框裱裝於背面左下角，搭配精選台詞與上方官方介紹句，同時保留充足且乾淨的手寫留言與收件地址空間。

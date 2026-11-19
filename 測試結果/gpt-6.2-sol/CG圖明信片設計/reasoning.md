@@ -1,0 +1,3 @@
+**Designing layout elements**
+
+I'm working on designing a landscape crop at specific dimensions, centered at 133 pixels. At a 1600 scale, I found the right measurements to use. The footer will have a gradient extending up, and the title will be positioned in the lower left corner with careful attention to avoid interference. I'm opting for no icons and planning to use A4 format. For typography, I'll ensure the title is positioned just below a certain beam, and I'll include notes and a quote on the back.
