@@ -1,8 +1,21 @@
-# 六模型五題橫評 (2026-10-14，2026-11-12 追評 Gemini 4 Carbon)
+# 輕旗艦模型測試結果
 
-> **本測試為 Oneshot 式測試**：每個模型每一題只作答一次，送出 prompt 後直接收下第一份輸出，中途沒有追問、提示、修正或重跑，也沒有挑選較好的一次。結果反映的是「一次到位」的表現，同一模型多跑幾次可能得到不同答案。唯一例外是 Gemini 4 Carbon 的數學題：第一次在 16,000 tokens 的輸出上限處被截斷，prompt 不變、上限調高到 32,000 後重跑一次，截斷版一併保留在 `answer_16k截斷.md`。
+| 模型 | 出廠時間 (OpenRouter 上架日) | 測試時間 | 輪次 |
+|---|---|---|---|
+| Claude Opus 5.5 | 2026-09-23 | 2026-10-14 | 第一輪 |
+| Claude Sonnet 5.5 | 2026-09-29 | 2026-10-14 | 第一輪 (API 補測 CG 題為第二輪) |
+| GPT-6.1 Sol | 2026-09-30 | 2026-10-14 | 第二輪 |
+| Muse Wonder | 2026-10-12 | 2026-10-14 | 第一輪 |
+| Gemini 4 Argon | 2026-10-14 | 2026-10-14 | 第一輪 |
+| Gemini 4 Carbon | 2026-11-11 | 2026-11-12 | 第三輪追評 |
+| GPT-6.2 Sol | 2026-11-18 | 2026-11-19 | 第四輪追評 |
+| Gemini 4 Neon | 2026-11-18 | 2026-11-19 | 第四輪追評 |
 
-同一組五道實務題 (CG 明信片設計、email 書寫、學測作文、經費配平、時事評論)，分別交給六個模型作答，再比較作答品質、事實正確性與成本。
+出廠時間取 OpenRouter 模型目錄的上架日 (GMT+8)，可能比官方發表晚一兩天；測試時間為送出 prompt 的日期。
+
+> **本測試為 Oneshot 式測試**：每個模型每一題只作答一次，送出 prompt 後直接收下第一份輸出，中途沒有追問、提示、修正或重跑，也沒有挑選較好的一次。結果反映的是「一次到位」的表現，同一模型多跑幾次可能得到不同答案。唯一例外是 Gemini 4 Carbon 的數學題：第一次在 16,000 tokens 的輸出上限處被截斷，prompt 不變、上限調高到 32,000 後重跑一次，截斷版一併保留在 `answer_16k截斷.md`。Gemini 4 Neon 的數學題在 32,000 tokens 上限處截斷 (思考就用掉 31,398 tokens)，依 Oneshot 原則不重跑，只保留截斷版 `answer_32k截斷.md`。
+
+同一組五道實務題 (CG 明信片設計、email 書寫、學測作文、經費配平、時事評論)，分別交給八個模型作答，再比較作答品質、事實正確性與成本。
 
 **線上瀏覽：** [展示頁](https://ag-0814.github.io/261014_LLM-Oneshot-Test/) (每個模型每一題的作答、思考過程、原始回應、明信片都可直接點開) · [AI 比較報告](https://ag-0814.github.io/261014_LLM-Oneshot-Test/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/index.html)
 
@@ -14,8 +27,10 @@
 | Muse Wonder | OpenRouter API | `prompt_API.txt` | 無 |
 | GPT-6.1 Sol | OpenRouter API | `prompt_API.txt` | 無 (第二輪補測) |
 | Gemini 4 Carbon | OpenRouter API | `prompt_API.txt` | 無 (第三輪追評，2026-11-12) |
+| GPT-6.2 Sol | OpenRouter API | `prompt_API.txt` | 無 (第四輪追評，2026-11-19) |
+| Gemini 4 Neon | OpenRouter API | `prompt_API.txt` | 無 (第四輪追評，2026-11-19) |
 
-思考強度一律設為 medium。數字以程式重算，事實對照新聞原文。另外補測了 Sonnet 5.5 走 OpenRouter API 的 CG 明信片題 (`sonnet-5.5_API`)，未列入總結表。
+思考強度一律設為 medium。數字以程式重算，事實對照新聞原文。另外補測了 Sonnet 5.5 走 OpenRouter API 的 CG 明信片題 (`sonnet-5.5_API`)，未列入總結表。第四輪的 GPT-6.2 Sol 與 Gemini 4 Neon 尚未加入下方兩張評分表；數學題的客觀對照已更新，見 [`測試結果/數學計算excel表配平/README.md`](測試結果/數學計算excel表配平/README.md)。
 
 ## AI 評分總結
 
@@ -28,7 +43,7 @@
 | 時事銳評 | 良 | 良 | 可 | 優 | 良 | 良 |
 
 - 標籤是同一題內的相對評價，不同題之間不可直接比較。
-- Claude 兩個模型可以上網和執行程式，API 四個模型不行，解讀時請把這點算進去。
+- Claude 兩個模型可以上網和執行程式，API 呼叫的模型不行，解讀時請把這點算進去。
 - 各題的詳細評語、字數實算、成本比較，請看 [`測試結果/比較報告/index.html`](測試結果/比較報告/index.html) (線上版見上方「AI 比較報告」連結)。
 
 ## 人類排序 vs AI 評分
@@ -53,7 +68,7 @@ AI 評分來自上方比較報告；人類排序來自評審的主觀閱讀 ([�
 | 時事銳評 | G4A >>> Mu2 = O5.5 > So5.5 >> Sol6.1 |
 | 數學配平 | 未評 (評審表示交給客觀計算；各模型與實際採用配法的對照見 [`測試結果/數學計算excel表配平/README.md`](測試結果/數學計算excel表配平/README.md)) |
 
-代稱：O5.5 = Opus 5.5、So5.5 = Sonnet 5.5、G4A = Gemini 4 Argon、Mu2 = Muse Wonder、Sol6.1 = GPT-6.1 Sol、So5.5_API = Sonnet 5.5 走 API 的補測、G4C = Gemini 4 Carbon (追評，人類尚未排序)。
+代稱：O5.5 = Opus 5.5、So5.5 = Sonnet 5.5、G4A = Gemini 4 Argon、Mu2 = Muse Wonder、Sol6.1 = GPT-6.1 Sol、So5.5_API = Sonnet 5.5 走 API 的補測、G4C = Gemini 4 Carbon (追評，人類尚未排序)、Sol6.2 = GPT-6.2 Sol、G4N = Gemini 4 Neon (第四輪追評，尚未評分)。
 
 對照下來的幾個差異：
 
@@ -79,7 +94,7 @@ AI 評分來自上方比較報告；人類排序來自評審的主觀閱讀 ([�
   gpt-6.2-sol/<題名>/          第四輪追評 (2026-11-19)
   gemini-4-neon/<題名>/        第四輪追評 (2026-11-19)；數學題 32k 截斷，只有 answer_32k截斷.md
   數學計算excel表配平/README.md  數學題：各模型主方案與實際採用配法的對照
-  比較報告/index.html          六模型橫評報告
+  比較報告/index.html          六模型橫評報告 (第一至三輪)
   比較報告/用戶主觀橫評.md      人類主觀評價全文
   API用量紀錄.md / .jsonl      OpenRouter 逐筆 tokens、耗時與費用
   子代理token用量.md           Claude Code 子代理的 tokens 與耗時
