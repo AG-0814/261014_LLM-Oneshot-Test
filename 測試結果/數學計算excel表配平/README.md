@@ -39,4 +39,4 @@
 | GPT-6.2 Sol | [answer.md](../gpt-6.2-sol/數學計算excel表配平/answer.md) | OpenRouter API (2026-11-19 追評) |
 | Gemini 4 Neon | [answer_32k截斷.md](../gemini-4-neon/數學計算excel表配平/answer_32k截斷.md) | OpenRouter API (2026-11-19 追評)，32k 上限截斷，附思考過程 |
 
-題目與附件見 [`測試題目/數學計算excel表配平/`](../../測試題目/數學計算excel表配平/)，AI 評分與詳細判讀見 [比較報告](../比較報告/index.html)。
+題目與附件見 [`測試題目/數學計算excel表配平/`](../../測試題目/數學計算excel表配平/)，AI 評分與詳細判讀見 [AI 盲評報告](../比較報告/AI盲評報告_Gemini4Neon.md) (另有 [Claude 評分參考](../比較報告/參考_Claude評分/index.html))。

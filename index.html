@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>輕旗艦模型測試結果</title>
-<meta name="description" content="Oneshot 式測試：Opus 5.5、Sonnet 5.5、Gemini 4 Argon、Muse Wonder、GPT-6.1 Sol 五題作答展示，附人類排序與 AI 評分對照。">
+<meta name="description" content="Oneshot 式測試：八個輕旗艦模型五題作答展示，附人類排序與 Gemini 4 Neon 匿名盲評對照。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
@@ -92,11 +92,12 @@
 <main>
   <p class="eyebrow">LLM 能力測試 · 2026-10-14 起 (11-12 追評 Gemini 4 Carbon，11-19 追評 GPT-6.2 Sol、Gemini 4 Neon)</p>
   <h1>輕旗艦模型測試結果</h1>
-  <p class="lead">同一組五道實務題，交給 Claude Opus 5.5、Claude Sonnet 5.5、Gemini 4 Argon、Muse Wonder、GPT-6.1 Sol、Gemini 4 Carbon、GPT-6.2 Sol、Gemini 4 Neon 作答。第四輪的兩個模型尚未評分。每張卡片可直接開啟該模型的作答、思考過程與原始回應。</p>
+  <p class="lead">同一組五道實務題，交給 Claude Opus 5.5、Claude Sonnet 5.5、Gemini 4 Argon、Muse Wonder、GPT-6.1 Sol、Gemini 4 Carbon、GPT-6.2 Sol、Gemini 4 Neon 作答。AI 評分改由 Gemini 4 Neon 在不知道模型名稱的情況下匿名盲評 (2026-11-22)。每張卡片可直接開啟該模型的作答、思考過程與原始回應。</p>
   <div class="note"><strong>Oneshot 式測試：</strong>每個模型每一題只作答一次，收下第一份輸出，中途沒有追問、修正或重跑。唯一例外是 Gemini 4 Carbon 的數學題：第一次在 16,000 tokens 輸出上限處被截斷，prompt 不變、上限調高到 32,000 後重跑一次，截斷版也一併保留。Gemini 4 Neon 的數學題在 32,000 tokens 上限處截斷，依 Oneshot 原則不重跑，只保留截斷版。</div>
   <p class="toplinks">
-    <a href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/index.html">AI 比較報告 (詳細評語與成本)</a>
+    <a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/AI%E7%9B%B2%E8%A9%95%E5%A0%B1%E5%91%8A_Gemini4Neon.md">AI 盲評報告 (Gemini 4 Neon 匿名評分)</a>
     <a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E7%94%A8%E6%88%B6%E4%B8%BB%E8%A7%80%E6%A9%AB%E8%A9%95.md">人類主觀評價全文</a>
+    <a href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E5%8F%83%E8%80%83_Claude%E8%A9%95%E5%88%86/index.html">參考：Claude 評分與成本比較</a>
     <a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test" target="_blank" rel="noopener">GitHub 倉庫</a>
   </p>
 
@@ -104,78 +105,78 @@
 
   <section id="overview">
     <h2>人類排序 vs AI 評分</h2>
-    <p class="desc">「人類 #n」是評審在該題的主觀名次 (並列同名次)；「AI」是 Claude 依正確性、遵循指示與成本寫的比較報告評分。兩者都只在同一題內比較。</p>
-    <div class="table-wrap"><table class="matrix"><thead><tr><th>題目</th><th>Opus 5.5</th><th>Sonnet 5.5</th><th>Gemini 4 Argon</th><th>Muse Wonder</th><th>GPT-6.1 Sol</th><th>Gemini 4 Carbon</th><th>GPT-6.2 Sol</th><th>Gemini 4 Neon</th></tr></thead><tbody><tr><th scope="row"><a href="#cg">CG 明信片設計</a></th><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 評分：正背面都完整">AI 優</span></td><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-b" title="AI 評分：正面佳，背面較弱">AI 良</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-a" title="AI 評分：設計最完整，主圖有黑邊">AI 優</span></td><td><span class="rank" title="人類排序">人類 #6</span><span class="rate r-c" title="AI 評分：文字溢出、被遮">AI 可</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 評分：乾淨無瑕疵，但較素">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：修掉 Argon 的黑邊與加料">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：乾淨但素，與 6.1 同型">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：素材與 Lucide 用得最完整">AI 優</span></td></tr><tr><th scope="row"><a href="#email">email 書寫</a></th><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-a" title="AI 評分：查到維修手冊與料號">AI 優</span></td><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-c" title="AI 評分：注音標錯，信中一句不妥">AI 可</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 評分：多處講得過度肯定">AI 可</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 評分：謹慎、不編造">AI 良</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 評分：謹慎，照片描述最準">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 評分：料號後綴對，照片判讀過度肯定">AI 可</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：判讀準確不編造，Hello 開頭">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：照片判讀最完整，不確定處都標示">AI 優</span></td></tr><tr><th scope="row"><a href="#essay">學測作文</a></th><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 評分：扣圖最緊">AI 優</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 評分：問題 (二) 字數偏少">AI 良</span></td><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 評分：結構完整">AI 良</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 評分：文筆最佳，背面最短">AI 優</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-a" title="AI 評分：選材最獨特，未扣圖">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：結構完整，情節近似 Argon">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：細節最具體，用情節呼應圖文乙">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：直接扣圖文乙，情節較套路">AI 良</span></td></tr><tr><th scope="row"><a href="#news">時事銳評</a></th><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-b" title="AI 評分：結構清楚，補了外部資料">AI 良</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 評分：分析細，略超篇幅">AI 良</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 評分：資訊最多，但篇幅超出一倍">AI 可</span></td><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-a" title="AI 評分：篇幅最準，口吻最在地">AI 優</span></td><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 評分：篇幅準、最持平，不夠銳">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：論點完整，超篇幅兩成">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：篇幅準、觀點清楚，吐槽仍克制">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：論點最銳，超篇幅三成">AI 良</span></td></tr><tr><th scope="row"><a href="#math">數學配平</a></th><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：改 1 盒歸零">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-n" title="AI 評分：0 盒歸零，靠混價假設">AI 待定</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 評分：未歸零，最佳值算錯">AI 弱</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：與 Opus 同解，代價列得最完整">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：歸零，但改報 11 盒">AI 良</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 評分：歸零，但五張單據跨計畫互換">AI 可</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：最接近實際配法，驗算無誤">AI 優</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 評分：思考耗盡上限，沒給出方案">AI 弱</span></td></tr></tbody></table></div>
-    <p class="legend">AI 評分由高到低：優、良、可、弱；「待定」表示答案是否成立取決於假設。</p>
+    <p class="desc">「人類 #n」是評審在該題的主觀名次 (並列同名次)；「AI」是 Gemini 4 Neon 拿到打碼版作答 (模型名稱換成 ModelA 至 ModelJ，包含它自己的作答) 後給的 100 分制分數與該題名次。兩者都只在同一題內比較。</p>
+    <div class="table-wrap"><table class="matrix"><thead><tr><th>題目</th><th>Opus 5.5</th><th>Sonnet 5.5</th><th>Gemini 4 Argon</th><th>Muse Wonder</th><th>GPT-6.1 Sol</th><th>Gemini 4 Carbon</th><th>GPT-6.2 Sol</th><th>Gemini 4 Neon</th></tr></thead><tbody><tr><th scope="row"><a href="#cg">CG 明信片設計</a></th><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 盲評：商業出版級水準，臉部特寫製成齒孔郵票極巧，附高解析送印檔。">AI 94 分 · #1</span></td><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-c" title="AI 盲評：直式仍留住燭火，但正面字壓亮髮絲、背面浮水印與文字衝突。">AI 75 分 · #8</span></td><td><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：雙模組構思佳，但郵戳溢框撞線且引入未給定的外部英文設定。">AI 80 分 · #6</span></td><td><span class="rank" title="人類排序">人類 #10</span><span class="rate r-d" title="AI 盲評：右上白字疊劍光難辨、底部文過大，背面角標撞框扣分較多。">AI 65 分 · #9</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 盲評：忠實保留原圖、正反乾淨零瑕疵，惜未用模組裝飾略顯樸素。">AI 82 分 · #5</span></td><td><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：正面雜誌感強、雙模組入畫，僅背面留言區略緊且郵戳微觸邊。">AI 88 分 · #4</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-c" title="AI 盲評：正面裁切俐落突出原圖，但背面元素過少、大面積留白略單薄。">AI 78 分 · #7</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：純 API 最佳，畫冊級留白避讓、信箋實用且反色細節無瑕疵。">AI 91 分 · #2</span></td></tr><tr><th scope="row"><a href="#email">email 書寫</a></th><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：挖出原廠維修手冊推料號，更抓包網站錯放示意圖，查證滿分。">AI 97 分 · #1</span></td><td><span class="rank" title="人類排序">人類 #8</span><span class="rate r-c" title="AI 盲評：有查價但漏找手冊與深藍色，且誤把 P 鍵注音看錯成「ㄆ」。">AI 77 分 · #7</span></td><td><span class="rank" title="人類排序">人類 #2</span><span class="rate r-c" title="AI 盲評：誤認含大易字根、違規編造多處台幣價格，並出現簡體漏字。">AI 72 分 · #8</span></td><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 盲評：嚴守不編造原則且提醒保護序號，唯漏看深藍色且誤稱附三張圖。">AI 85 分 · #4</span></td><td><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：診斷克制且信件精準對應檔名，但漏提深藍色與出現三處簡體字。">AI 83 分 · #5</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：視覺細節命中率高，但武斷判卡榫必斷、略報價且誤推機械鍵店。">AI 81 分 · #6</span></td><td><span class="rank" title="人類排序">人類 #7</span><span class="rate r-b" title="AI 盲評：邏輯嚴謹零幻覺、提醒勿拆鄰鍵，英文信最自然，唯漏深藍細節。">AI 87 分 · #3</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：純 API 冠軍，命中深藍、大鍵帽與刻字，嚴謹零幻覺。">AI 92 分 · #2</span></td></tr><tr><th scope="row"><a href="#essay">學測作文</a></th><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：審題精準且緊扣圖文翻轉，結構穩健，但選材較保守偏說教。">AI 82 分 · #4</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 盲評：問題二硬拆兩事不深，第二題套老梗且生硬直呼「圖文甲乙」。">AI 72 分 · #8</span></td><td><span class="rank" title="人類排序">人類 #7</span><span class="rate r-c" title="AI 盲評：雙題落入老梗模板，且問題二僅旁觀他人行善，承擔力道偏弱。">AI 74 分 · #7</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 盲評：畫面有溫度，但兩題皆走安全模板、背面偏短且改考卷情節違和。">AI 80 分 · #5</span></td><td><span class="rank" title="人類排序">人類 #6</span><span class="rate r-a" title="AI 盲評：兩題皆避開老梗，思辨成熟、結尾克制真實，不灑狗血具張力。">AI 91 分 · #2</span></td><td><span class="rank" title="人類排序">人類 #4</span><span class="rate r-c" title="AI 盲評：字數格式皆完美，屬工整標準 AI 範文，但雙題皆中俗套模板。">AI 77 分 · #6</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：全場斷層冠軍，雙題徹底跳脫俗套，不鏽鋼鍋蓋細節達範文水準。">AI 96 分 · #1</span></td><td><span class="rank" title="人類排序">人類 #7</span><span class="rate r-b" title="AI 盲評：問題二跳脫小販梗、文筆工整飽滿，唯第二大題仍落老花眼鏡梗。">AI 86 分 · #3</span></td></tr><tr><th scope="row"><a href="#news">時事銳評</a></th><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-a" title="AI 盲評：商科洞察與粉專語氣平衡最佳，聯網補股權脈絡並規範列源。">AI 93 分 · #1</span></td><td><span class="rank" title="人類排序">人類 #7</span><span class="rate r-c" title="AI 盲評：三客群拆解與連續三刀觀察佳，但主標略偏且條列感重偏教科書。">AI 78 分 · #7</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-d" title="AI 盲評：字數暴走逾目標兩倍、語氣浮誇，且把推測動機當作事實論述。">AI 68 分 · #8</span></td><td><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 盲評：字數精準、語感親切金句頻出，六大要點齊備且嚴守推測分界。">AI 87 分 · #4</span></td><td><span class="rank" title="人類排序">人類 #8</span><span class="rate r-a" title="AI 盲評：純 API 冠軍，商科思辨扎實、拒絕帶風向，字數精準達標。">AI 90 分 · #2</span></td><td><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：網感佳、點出生態導流，但偏長且「三個推測」只寫了兩個。">AI 81 分 · #6</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 盲評：字數最貼合規範，拆解收費與限量極理性，唯粉專吐槽張力稍弱。">AI 84 分 · #5</span></td><td><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 盲評：最具爆款粉專長文網感，串聯會員生態邏輯完整，僅字數略長。">AI 89 分 · #3</span></td></tr><tr><th scope="row"><a href="#math">數學配平</a></th><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：程式窮舉證最優，僅挪 1 盒歸零且三層替代方案完整俐落。">AI 98 分 · #1</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：巧抓原表一單兩價結構，零改盒數僅搬兩筆即歸零，替代解完整。">AI 96 分 · #2</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 盲評：主方案未歸零且拆出突兀單價，替代方案更出現算術多報錯帳。">AI 68 分 · #7</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：純心算解出 1 盒歸零解與 51 元替代解，精煉無誤。">AI 92 分 · #4</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 盲評：全表展開無錯、僅搬兩筆歸零，唯內挪 11 盒略多。">AI 89 分 · #5</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 盲評：數學解完備，但 16k 截斷且正文裸露逾五百行修正草稿。">AI 76 分 · #6</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：純 API 最佳，全表簡潔無誤，不增袋費挪 2 盒歸零。">AI 93 分 · #3</span></td><td><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 盲評：32k 截斷僅輸出 19 行即中斷，未能產出配平方案。">AI 15 分 · #8</span></td></tr></tbody></table></div>
+    <p class="legend">AI 分數色塊：90 分以上綠、80 分以上藍、70 分以上黃、70 分以下紅。明信片題的 AI 名次含未上傳的 Gemini 4 Argon App 版 (90 分，第 3 名)，所以會跳號。</p>
   </section>
 
   <section id="cg">
     <h2>CG 明信片設計</h2>
     <p class="desc">替一張遊戲 CG 設計 A6 明信片正背面，輸出單一 HTML。</p>
     <p class="plinks"><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/prompt_API.txt">prompt (API 版)</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/prompt_App.txt">prompt (App 版)</a><a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">附件</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E7%94%A8%E6%88%B6%E4%B8%BB%E8%A7%80%E6%A9%AB%E8%A9%95.md#cg%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88">人類評語全文</a></p>
-    <p class="order"><span class="who">人類排序</span><code>O5.5 &gt; So5.5 &gt;&gt; Sol6.1 &gt; G4A = So5.5_API &gt; Mu2</code></p>
+    <p class="order"><span class="who">人類排序</span><code>O5.5 &gt; So5.5 &gt;&gt; G4N &gt;&gt; Sol6.1 = Sol6.2 &gt; G4C = G4A = G4A_APP = So5.5_API &gt; Mu2</code></p>
     <div class="grid">
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/opus-5.5.jpg" alt="Opus 5.5 明信片正背面" loading="lazy"></a>
         <header><h3>Opus 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 評分：正背面都完整">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>我的天啊，許願機大人。</blockquote><p class="ai-note"><span class="who">AI 評語</span>正背面都完整</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 盲評：商業出版級水準，臉部特寫製成齒孔郵票極巧，附高解析送印檔。">AI 94 分 · #1</span></div>
+        <blockquote><span class="who">人類評語</span>我的天啊，許願機大人。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>商業出版級水準，臉部特寫製成齒孔郵票極巧，附高解析送印檔。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/sonnet-5.5.jpg" alt="Sonnet 5.5 明信片正背面" loading="lazy"></a>
         <header><h3>Sonnet 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-b" title="AI 評分：正面佳，背面較弱">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>也不錯，封你為小許願機。</blockquote><p class="ai-note"><span class="who">AI 評語</span>正面佳，背面較弱</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-c" title="AI 盲評：直式仍留住燭火，但正面字壓亮髮絲、背面浮水印與文字衝突。">AI 75 分 · #8</span></div>
+        <blockquote><span class="who">人類評語</span>也不錯，封你為小許願機。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>直式仍留住燭火，但正面字壓亮髮絲、背面浮水印與文字衝突。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/gemini-4-argon.jpg" alt="Gemini 4 Argon 明信片正背面" loading="lazy"></a>
         <header><h3>Gemini 4 Argon</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-a" title="AI 評分：設計最完整，主圖有黑邊">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>元素堆太滿，什麼都想留，不做取捨。</blockquote><p class="ai-note"><span class="who">AI 評語</span>設計最完整，主圖有黑邊</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：雙模組構思佳，但郵戳溢框撞線且引入未給定的外部英文設定。">AI 80 分 · #6</span></div>
+        <blockquote><span class="who">人類評語</span>元素堆太滿，什麼都想留，不做取捨。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>雙模組構思佳，但郵戳溢框撞線且引入未給定的外部英文設定。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/muse-wonder.jpg" alt="Muse Wonder 明信片正背面" loading="lazy"></a>
         <header><h3>Muse Wonder</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-c" title="AI 評分：文字溢出、被遮">AI 可</span></div>
-        <blockquote><span class="who">人類評語</span>小毛病不算少，跟G4A一樣也沒有做任何取捨，把所有素材全堆上去了。</blockquote><p class="ai-note"><span class="who">AI 評語</span>文字溢出、被遮</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #10</span><span class="rate r-d" title="AI 盲評：右上白字疊劍光難辨、底部文過大，背面角標撞框扣分較多。">AI 65 分 · #9</span></div>
+        <blockquote><span class="who">人類評語</span>小毛病不算少，跟G4A一樣也沒有做任何取捨，把所有素材全堆上去了。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>右上白字疊劍光難辨、底部文過大，背面角標撞框扣分較多。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/gpt-6.1-sol.jpg" alt="GPT-6.1 Sol 明信片正背面" loading="lazy"></a>
         <header><h3>GPT-6.1 Sol</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 評分：乾淨無瑕疵，但較素">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>無功無過。</blockquote><p class="ai-note"><span class="who">AI 評語</span>乾淨無瑕疵，但較素</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 盲評：忠實保留原圖、正反乾淨零瑕疵，惜未用模組裝飾略顯樸素。">AI 82 分 · #5</span></div>
+        <blockquote><span class="who">人類評語</span>無功無過。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>忠實保留原圖、正反乾淨零瑕疵，惜未用模組裝飾略顯樸素。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/gemini-4-carbon.jpg" alt="Gemini 4 Carbon 明信片正背面" loading="lazy"></a>
         <header><h3>Gemini 4 Carbon</h3><span class="chan">OpenRouter API (第三輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：修掉 Argon 的黑邊與加料">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>修掉 Argon 的黑邊與加料</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：正面雜誌感強、雙模組入畫，僅背面留言區略緊且郵戳微觸邊。">AI 88 分 · #4</span></div>
+        <blockquote><span class="who">人類評語</span>加加減減後與G4A差不多。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>正面雜誌感強、雙模組入畫，僅背面留言區略緊且郵戳微觸邊。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/gpt-6.2-sol.jpg" alt="GPT-6.2 Sol 明信片正背面" loading="lazy"></a>
         <header><h3>GPT-6.2 Sol</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：乾淨但素，與 6.1 同型">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>乾淨但素，與 6.1 同型</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-c" title="AI 盲評：正面裁切俐落突出原圖，但背面元素過少、大面積留白略單薄。">AI 78 分 · #7</span></div>
+        <blockquote><span class="who">人類評語</span>無功無過。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>正面裁切俐落突出原圖，但背面元素過少、大面積留白略單薄。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/gemini-4-neon.jpg" alt="Gemini 4 Neon 明信片正背面" loading="lazy"></a>
         <header><h3>Gemini 4 Neon</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：素材與 Lucide 用得最完整">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>素材與 Lucide 用得最完整</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：純 API 最佳，畫冊級留白避讓、信箋實用且反色細節無瑕疵。">AI 91 分 · #2</span></div>
+        <blockquote><span class="who">人類評語</span>美術特長生！</blockquote><p class="ai-note"><span class="who">AI 盲評</span>純 API 最佳，畫冊級留白避讓、信箋實用且反色細節無瑕疵。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         <a class="thumb" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5_API/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener"><img src="assets/thumbs/sonnet-5.5_API.jpg" alt="Sonnet 5.5 (API 補測) 明信片正背面" loading="lazy"></a>
         <header><h3>Sonnet 5.5 (API 補測)</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-n" title="AI 評分">AI 未列入</span></div>
-        <blockquote><span class="who">人類評語</span>補測了Sonnet 5.5 API端口，後版面icon放太大了，線條很粗，沒有檢查，前版面人物放得有點偏右，所有給他的元素都堆上去了(簡體中文沒轉成繁體中文)，整體來說水平跟G4A做的差不多。</blockquote>
+        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-d" title="AI 盲評：多處殘留簡體、郵戳捏造怪詞，直式裁切切掉白燭卻自稱保留。">AI 52 分 · #10</span></div>
+        <blockquote><span class="who">人類評語</span>Claude Desktop的框架好像有魔法? :o</blockquote><p class="ai-note"><span class="who">AI 盲評</span>多處殘留簡體、郵戳捏造怪詞，直式裁切切掉白燭卻自稱保留。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5_API/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5_API/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/postcard.html" target="_blank" rel="noopener">開啟明信片</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5_API/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5_API/CG%E5%9C%96%E6%98%8E%E4%BF%A1%E7%89%87%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">GitHub</a></nav>
       </article></div>
   </section>
@@ -183,62 +184,62 @@
     <h2>email 書寫</h2>
     <p class="desc">判讀筆電鍵帽照片、說明規格與購買管道，並寫一封英文詢價信。</p>
     <p class="plinks"><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/email%E6%9B%B8%E5%AF%AB/prompt_API.txt">prompt (API 版)</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/email%E6%9B%B8%E5%AF%AB/prompt_App.txt">prompt (App 版)</a><a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">附件</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E7%94%A8%E6%88%B6%E4%B8%BB%E8%A7%80%E6%A9%AB%E8%A9%95.md#email%E6%9B%B8%E5%AF%AB">人類評語全文</a></p>
-    <p class="order"><span class="who">人類排序</span><code>G4A &gt; O5.5 &gt;&gt;&gt;&gt; Mu2 &gt; Sol6.1 &gt; So5.5</code></p>
+    <p class="order"><span class="who">人類排序</span><code>G4C &gt; G4A &gt; O5.5 = G4N &gt;&gt;&gt; Mu2 &gt; Sol6.1 &gt; Sol6.2 &gt; So5.5</code></p>
     <div class="grid">
       <article class="card">
         
         <header><h3>Opus 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-a" title="AI 評分：查到維修手冊與料號">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>信件可用，完全不用改。</blockquote><p class="ai-note"><span class="who">AI 評語</span>查到維修手冊與料號</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：挖出原廠維修手冊推料號，更抓包網站錯放示意圖，查證滿分。">AI 97 分 · #1</span></div>
+        <blockquote><span class="who">人類評語</span>基準回答。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>挖出原廠維修手冊推料號，更抓包網站錯放示意圖，查證滿分。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Sonnet 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-c" title="AI 評分：注音標錯，信中一句不妥">AI 可</span></div>
-        <blockquote><span class="who">人類評語</span>信件需調整後才可使用，但整體比Mu2好一些，但有一些句式的禮貌程度不足，太隨意也太壓力了，比如這句：&quot;can you declare the package value accordingly?&quot;，而且So5.5是唯一用Hello開頭的，好沒禮貌!</blockquote><p class="ai-note"><span class="who">AI 評語</span>注音標錯，信中一句不妥</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #8</span><span class="rate r-c" title="AI 盲評：有查價但漏找手冊與深藍色，且誤把 P 鍵注音看錯成「ㄆ」。">AI 77 分 · #7</span></div>
+        <blockquote><span class="who">人類評語</span>信件需調整後才可使用，但整體比Mu2好一些，但有一些句式的禮貌程度不足，太隨意也太壓力了，比如這句：&quot;can you declare the package value accordingly?&quot;。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>有查價但漏找手冊與深藍色，且誤把 P 鍵注音看錯成「ㄆ」。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Argon</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 評分：多處講得過度肯定">AI 可</span></div>
-        <blockquote><span class="who">人類評語</span>信件可用，完全不用改；但信中一些過於自信的說明可能會被對方指正，這點以這封信的定位(請教語氣)來說倒是還好，不是太大的問題。</blockquote><p class="ai-note"><span class="who">AI 評語</span>多處講得過度肯定</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-c" title="AI 盲評：誤認含大易字根、違規編造多處台幣價格，並出現簡體漏字。">AI 72 分 · #8</span></div>
+        <blockquote><span class="who">人類評語</span>信中一些過於自信的說明可能會被對方指正，這點以這封信的定位(請教語氣)來說倒是還好，不是太大的問題。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>誤認含大易字根、違規編造多處台幣價格，並出現簡體漏字。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Muse Wonder</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 評分：謹慎、不編造">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>信件需調整後才可使用，比較不建議讓Mu2碰這種未知問題很多的任務，其模型底色防禦性比較強，不確定的事情它是真不敢做也不敢寫。</blockquote><p class="ai-note"><span class="who">AI 評語</span>謹慎、不編造</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 盲評：嚴守不編造原則且提醒保護序號，唯漏看深藍色且誤稱附三張圖。">AI 85 分 · #4</span></div>
+        <blockquote><span class="who">人類評語</span>信件需調整後才可使用，比較不建議讓Mu2碰這種未知問題很多的任務，其模型底色防禦性比較強，不確定的事情它是真不敢做也不敢寫。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>嚴守不編造原則且提醒保護序號，唯漏看深藍色且誤稱附三張圖。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/email%E6%9B%B8%E5%AF%AB/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.1 Sol</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 評分：謹慎，照片描述最準">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>信件可用，完全不用改。但回答用戶時有點膽小，過於保守且偏向防禦性說明，對於協助用戶解決問題起不到實際幫助，用戶還是要自己通過搜尋引擎才能找到答案。</blockquote><p class="ai-note"><span class="who">AI 評語</span>謹慎，照片描述最準</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-b" title="AI 盲評：診斷克制且信件精準對應檔名，但漏提深藍色與出現三處簡體字。">AI 83 分 · #5</span></div>
+        <blockquote><span class="who">人類評語</span>回答用戶時有點膽小，過於保守且偏向防禦性說明，對於協助用戶解決問題起不到實際幫助，用戶還是要自己通過搜尋引擎才能找到答案。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>診斷克制且信件精準對應檔名，但漏提深藍色與出現三處簡體字。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Carbon</h3><span class="chan">OpenRouter API (第三輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 評分：料號後綴對，照片判讀過度肯定">AI 可</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>料號後綴對，照片判讀過度肯定</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：視覺細節命中率高，但武斷判卡榫必斷、略報價且誤推機械鍵店。">AI 81 分 · #6</span></div>
+        <blockquote><span class="who">人類評語</span>跟G4A答得差不多，個人更偏好這款風格簡潔的回答。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>視覺細節命中率高，但武斷判卡榫必斷、略報價且誤推機械鍵店。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.2 Sol</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：判讀準確不編造，Hello 開頭">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>判讀準確不編造，Hello 開頭</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #7</span><span class="rate r-b" title="AI 盲評：邏輯嚴謹零幻覺、提醒勿拆鄰鍵，英文信最自然，唯漏深藍細節。">AI 87 分 · #3</span></div>
+        <blockquote><span class="who">人類評語</span>信件需調整後才可使用，雖然在6.1的基礎上稍微鬆弛了一點，但整體而言還行。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>邏輯嚴謹零幻覺、提醒勿拆鄰鍵，英文信最自然，唯漏深藍細節。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Neon</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：照片判讀最完整，不確定處都標示">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>照片判讀最完整，不確定處都標示</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：純 API 冠軍，命中深藍、大鍵帽與刻字，嚴謹零幻覺。">AI 92 分 · #2</span></div>
+        <blockquote><span class="who">人類評語</span>穩定的輕旗艦模型，但推薦順序上不太精準。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>純 API 冠軍，命中深藍、大鍵帽與刻字，嚴謹零幻覺。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/email%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/email%E6%9B%B8%E5%AF%AB/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/email%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/email%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article></div>
   </section>
@@ -246,62 +247,62 @@
     <h2>學測作文</h2>
     <p class="desc">以考生身分作答 115 學測國寫兩大題，有字數限制。</p>
     <p class="plinks"><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/prompt_API.txt">prompt (API 版)</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/prompt_App.txt">prompt (App 版)</a><a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">附件</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E7%94%A8%E6%88%B6%E4%B8%BB%E8%A7%80%E6%A9%AB%E8%A9%95.md#%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB">人類評語全文</a></p>
-    <p class="order"><span class="who">人類排序</span><code>O5.5 = So5.5 &gt; Mu2 &gt;&gt; Sol6.1 &gt; G4A</code></p>
+    <p class="order"><span class="who">人類排序</span><code>O5.5 = So5.5 &gt; Sol6.2 &gt; Mu2 = G4C &gt;&gt; Sol6.1 &gt; G4A = G4N</code></p>
     <div class="grid">
       <article class="card">
         
         <header><h3>Opus 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-a" title="AI 評分：扣圖最緊">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>優秀，是厲害的作文寫手能寫出來的文稿，抓到了起承轉合的脈絡，也把角色人設掌握得比較精良。</blockquote><p class="ai-note"><span class="who">AI 評語</span>扣圖最緊</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：審題精準且緊扣圖文翻轉，結構穩健，但選材較保守偏說教。">AI 82 分 · #4</span></div>
+        <blockquote><span class="who">人類評語</span>優秀，是厲害的作文寫手能寫出來的文稿，抓到了起承轉合的脈絡，也把角色人設掌握得比較精良。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>審題精準且緊扣圖文翻轉，結構穩健，但選材較保守偏說教。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Sonnet 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 評分：問題 (二) 字數偏少">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>優秀，是厲害的作文寫手能寫出來的文稿，抓到了起承轉合的脈絡，也把角色人設掌握得比較精良。</blockquote><p class="ai-note"><span class="who">AI 評語</span>問題 (二) 字數偏少</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 盲評：問題二硬拆兩事不深，第二題套老梗且生硬直呼「圖文甲乙」。">AI 72 分 · #8</span></div>
+        <blockquote><span class="who">人類評語</span>優秀，是厲害的作文寫手能寫出來的文稿，抓到了起承轉合的脈絡，也把角色人設掌握得比較精良。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>問題二硬拆兩事不深，第二題套老梗且生硬直呼「圖文甲乙」。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Argon</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 評分：結構完整">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>偽人文字，視角像在寫一個童話劇本，完全沒有帶入自己考生身分，不像18歲小孩，像成年人模擬小孩寫作。</blockquote><p class="ai-note"><span class="who">AI 評語</span>結構完整</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #7</span><span class="rate r-c" title="AI 盲評：雙題落入老梗模板，且問題二僅旁觀他人行善，承擔力道偏弱。">AI 74 分 · #7</span></div>
+        <blockquote><span class="who">人類評語</span>偽人文字，視角像在寫一個童話劇本，完全沒有帶入自己考生身分，不像18歲小孩，像成年人模擬小孩寫作。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>雙題落入老梗模板，且問題二僅旁觀他人行善，承擔力道偏弱。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Muse Wonder</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 評分：文筆最佳，背面最短">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>品質尚可，比較像18歲孩子能寫出來的文稿，但有一些排比句可以再優化，排比句用的多了會很有AI感。</blockquote><p class="ai-note"><span class="who">AI 評語</span>文筆最佳，背面最短</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 盲評：畫面有溫度，但兩題皆走安全模板、背面偏短且改考卷情節違和。">AI 80 分 · #5</span></div>
+        <blockquote><span class="who">人類評語</span>品質尚可，比較像18歲孩子能寫出來的文稿，但有一些排比句可以再優化，排比句用的多了會很有AI感。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>畫面有溫度，但兩題皆走安全模板、背面偏短且改考卷情節違和。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.1 Sol</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-a" title="AI 評分：選材最獨特，未扣圖">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>字面是死人文字，讀起來一點起伏都沒有，還有GPT特色的雷霆大換行，比G4A的偽人文字還令我畏懼。但主軸是清晰且易懂的，抽調字面，細寫起來邏輯是挺順暢的。</blockquote><p class="ai-note"><span class="who">AI 評語</span>選材最獨特，未扣圖</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #6</span><span class="rate r-a" title="AI 盲評：兩題皆避開老梗，思辨成熟、結尾克制真實，不灑狗血具張力。">AI 91 分 · #2</span></div>
+        <blockquote><span class="who">人類評語</span>字面是死人文字，讀起來一點起伏都沒有，還有GPT特色的雷霆大換行，比G4A的偽人邏輯還令我畏懼。但主軸是清晰且易懂的，抽調字面，細讀起來邏輯是挺順暢的。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>兩題皆避開老梗，思辨成熟、結尾克制真實，不灑狗血具張力。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Carbon</h3><span class="chan">OpenRouter API (第三輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：結構完整，情節近似 Argon">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>結構完整，情節近似 Argon</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-c" title="AI 盲評：字數格式皆完美，屬工整標準 AI 範文，但雙題皆中俗套模板。">AI 77 分 · #6</span></div>
+        <blockquote><span class="who">人類評語</span>比較貼近18歲孩子能寫出來的感覺，體感跟Mu2寫得文筆差不多。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>字數格式皆完美，屬工整標準 AI 範文，但雙題皆中俗套模板。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.2 Sol</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：細節最具體，用情節呼應圖文乙">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>細節最具體，用情節呼應圖文乙</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-a" title="AI 盲評：全場斷層冠軍，雙題徹底跳脫俗套，不鏽鋼鍋蓋細節達範文水準。">AI 96 分 · #1</span></div>
+        <blockquote><span class="who">人類評語</span>優秀且有自己風格的主題選擇，雖然讀起來因略微缺失細節而扣了些分，整體而言仍屬上乘之作。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>全場斷層冠軍，雙題徹底跳脫俗套，不鏽鋼鍋蓋細節達範文水準。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Neon</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：直接扣圖文乙，情節較套路">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>直接扣圖文乙，情節較套路</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #7</span><span class="rate r-b" title="AI 盲評：問題二跳脫小販梗、文筆工整飽滿，唯第二大題仍落老花眼鏡梗。">AI 86 分 · #3</span></div>
+        <blockquote><span class="who">人類評語</span>感覺跟G4A答得有點像，偽人邏輯，一點都不真實，然後還堆疊了一些很華麗的場景描寫，是我不喜歡的那味。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>問題二跳脫小販梗、文筆工整飽滿，唯第二大題仍落老花眼鏡梗。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E4%BD%9C%E6%96%87%E6%9B%B8%E5%AF%AB" target="_blank" rel="noopener">GitHub</a></nav>
       </article></div>
   </section>
@@ -309,62 +310,62 @@
     <h2>時事銳評</h2>
     <p class="desc">根據三篇新聞，以商科自媒體人口吻寫星巴克收費新制的粉專長文。</p>
     <p class="plinks"><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/prompt_API.txt">prompt (API 版)</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/prompt_App.txt">prompt (App 版)</a><a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">附件</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/%E6%96%B0%E8%81%9E%E4%BE%86%E6%BA%90.md">新聞來源</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/%E6%AF%94%E8%BC%83%E5%A0%B1%E5%91%8A/%E7%94%A8%E6%88%B6%E4%B8%BB%E8%A7%80%E6%A9%AB%E8%A9%95.md#%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95">人類評語全文</a></p>
-    <p class="order"><span class="who">人類排序</span><code>G4A &gt;&gt;&gt; Mu2 = O5.5 &gt; So5.5 &gt;&gt; Sol6.1</code></p>
+    <p class="order"><span class="who">人類排序</span><code>G4A = G4C &gt;&gt; G4N = Sol6.2 &gt; Mu2 = O5.5 &gt; So5.5 &gt;&gt; Sol6.1</code></p>
     <div class="grid">
       <article class="card">
         
         <header><h3>Opus 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-b" title="AI 評分：結構清楚，補了外部資料">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>品質不錯，觀點相對中規中矩，可以直接上傳作為一篇平台上普通的時事評價文。</blockquote><p class="ai-note"><span class="who">AI 評語</span>結構清楚，補了外部資料</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-a" title="AI 盲評：商科洞察與粉專語氣平衡最佳，聯網補股權脈絡並規範列源。">AI 93 分 · #1</span></div>
+        <blockquote><span class="who">人類評語</span>品質不錯，觀點相對中規中矩，可以直接上傳作為一篇平台上普通的時事評價文。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>商科洞察與粉專語氣平衡最佳，聯網補股權脈絡並規範列源。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Sonnet 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #4</span><span class="rate r-b" title="AI 評分：分析細，略超篇幅">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>品質不錯，可以直接上傳作為一篇平台上普通的時事評價文。列舉式寫作讀起來視覺上比較舒適，但好像沒留意社媒平台不一定支援md格式。邏輯脈絡有點小問題，似乎沒怎麼用上財報資訊，只是當成背景帶過去了，但整體而言還算講明白這件事了(會做取捨的模型丟掉不能丟的部分了)。</blockquote><p class="ai-note"><span class="who">AI 評語</span>分析細，略超篇幅</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #7</span><span class="rate r-c" title="AI 盲評：三客群拆解與連續三刀觀察佳，但主標略偏且條列感重偏教科書。">AI 78 分 · #7</span></div>
+        <blockquote><span class="who">人類評語</span>品質不錯，可以直接上傳作為一篇平台上普通的時事評價文。列舉式寫作讀起來視覺上比較舒適，但好像沒留意社媒平台不一定支援md格式。邏輯脈絡有點小問題，似乎沒怎麼用上財報資訊，只是當成背景帶過去了，但整體而言還算講明白這件事了(會做取捨的模型丟掉不能丟的部分了)。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>三客群拆解與連續三刀觀察佳，但主標略偏且條列感重偏教科書。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Argon</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-c" title="AI 評分：資訊最多，但篇幅超出一倍">AI 可</span></div>
-        <blockquote><span class="who">人類評語</span>極佳，高品質，加一個聳動的標題就可以直接用了，而且我覺得大家會喜歡，這才是Gemini的實力!</blockquote><p class="ai-note"><span class="who">AI 評語</span>資訊最多，但篇幅超出一倍</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-d" title="AI 盲評：字數暴走逾目標兩倍、語氣浮誇，且把推測動機當作事實論述。">AI 68 分 · #8</span></div>
+        <blockquote><span class="who">人類評語</span>極佳，高品質，加一個聳動的標題就可以直接用了，這就是Gemini的實力!</blockquote><p class="ai-note"><span class="who">AI 盲評</span>字數暴走逾目標兩倍、語氣浮誇，且把推測動機當作事實論述。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Muse Wonder</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #2</span><span class="rate r-a" title="AI 評分：篇幅最準，口吻最在地">AI 優</span></div>
-        <blockquote><span class="who">人類評語</span>品質不錯，有台灣味，可以直接上傳作為一篇平台上普通的時事評價文。</blockquote><p class="ai-note"><span class="who">AI 評語</span>篇幅最準，口吻最在地</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 盲評：字數精準、語感親切金句頻出，六大要點齊備且嚴守推測分界。">AI 87 分 · #4</span></div>
+        <blockquote><span class="who">人類評語</span>品質不錯，有台灣味，可以直接上傳作為一篇平台上普通的時事評價文。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>字數精準、語感親切金句頻出，六大要點齊備且嚴守推測分界。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.1 Sol</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank" title="人類排序">人類 #5</span><span class="rate r-b" title="AI 評分：篇幅準、最持平，不夠銳">AI 良</span></div>
-        <blockquote><span class="who">人類評語</span>雷霆大換行+防禦型寫作嘛，不賴。不能直接用，要改完才能傳平台。</blockquote><p class="ai-note"><span class="who">AI 評語</span>篇幅準、最持平，不夠銳</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #8</span><span class="rate r-a" title="AI 盲評：純 API 冠軍，商科思辨扎實、拒絕帶風向，字數精準達標。">AI 90 分 · #2</span></div>
+        <blockquote><span class="who">人類評語</span>雷霆大換行+防禦型寫作。不能直接用，要改完才能傳平台。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>純 API 冠軍，商科思辨扎實、拒絕帶風向，字數精準達標。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Carbon</h3><span class="chan">OpenRouter API (第三輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：論點完整，超篇幅兩成">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>論點完整，超篇幅兩成</p>
+        <div class="badges"><span class="rank top" title="人類排序">人類 #1</span><span class="rate r-b" title="AI 盲評：網感佳、點出生態導流，但偏長且「三個推測」只寫了兩個。">AI 81 分 · #6</span></div>
+        <blockquote><span class="who">人類評語</span>高品質的自媒體文章，會感覺到被成功說服，算是滅火文的典範。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>網感佳、點出生態導流，但偏長且「三個推測」只寫了兩個。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.2 Sol</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：篇幅準、觀點清楚，吐槽仍克制">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>篇幅準、觀點清楚，吐槽仍克制</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 盲評：字數最貼合規範，拆解收費與限量極理性，唯粉專吐槽張力稍弱。">AI 84 分 · #5</span></div>
+        <blockquote><span class="who">人類評語</span>無功無過的普通時事評價文。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>字數最貼合規範，拆解收費與限量極理性，唯粉專吐槽張力稍弱。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Neon</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：論點最銳，超篇幅三成">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>論點最銳，超篇幅三成</p>
+        <div class="badges"><span class="rank" title="人類排序">人類 #3</span><span class="rate r-b" title="AI 盲評：最具爆款粉專長文網感，串聯會員生態邏輯完整，僅字數略長。">AI 89 分 · #3</span></div>
+        <blockquote><span class="who">人類評語</span>品質不錯，觀點鮮明，加加減減比Mu2稍微強點。</blockquote><p class="ai-note"><span class="who">AI 盲評</span>最具爆款粉專長文網感，串聯會員生態邏輯完整，僅字數略長。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%99%82%E4%BA%8B%E7%86%B1%E9%BB%9E%E9%8A%B3%E8%A9%95" target="_blank" rel="noopener">GitHub</a></nav>
       </article></div>
   </section>
@@ -372,62 +373,62 @@
     <h2>數學配平</h2>
     <p class="desc">三個計畫的業務費配平，求最少改動的核銷方案。</p>
     <p class="plinks"><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/prompt_API.txt">prompt (API 版)</a><a href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/prompt_App.txt">prompt (App 版)</a><a href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E9%A1%8C%E7%9B%AE/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">附件</a></p>
-    <p class="order"><span class="who">人類排序</span>未評 (評審表示數學題交給客觀計算，請看比較報告)</p>
+    <p class="order"><span class="who">人類排序</span>未評 (評審表示數學題交給客觀計算，請看 AI 盲評與數學題對照表)</p>
     <div class="grid">
       <article class="card">
         
         <header><h3>Opus 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：改 1 盒歸零">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>改 1 盒歸零</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：程式窮舉證最優，僅挪 1 盒歸零且三層替代方案完整俐落。">AI 98 分 · #1</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>程式窮舉證最優，僅挪 1 盒歸零且三層替代方案完整俐落。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/work" target="_blank" rel="noopener">計算程式</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/opus-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Sonnet 5.5</h3><span class="chan">Claude Code 子代理</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-n" title="AI 評分：0 盒歸零，靠混價假設">AI 待定</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>0 盒歸零，靠混價假設</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：巧抓原表一單兩價結構，零改盒數僅搬兩筆即歸零，替代解完整。">AI 96 分 · #2</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>巧抓原表一單兩價結構，零改盒數僅搬兩筆即歸零，替代解完整。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/work" target="_blank" rel="noopener">計算程式</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/sonnet-5.5/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Argon</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 評分：未歸零，最佳值算錯">AI 弱</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>未歸零，最佳值算錯</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 盲評：主方案未歸零且拆出突兀單價，替代方案更出現算術多報錯帳。">AI 68 分 · #7</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>主方案未歸零且拆出突兀單價，替代方案更出現算術多報錯帳。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-argon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Muse Wonder</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：與 Opus 同解，代價列得最完整">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>與 Opus 同解，代價列得最完整</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：純心算解出 1 盒歸零解與 51 元替代解，精煉無誤。">AI 92 分 · #4</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>純心算解出 1 盒歸零解與 51 元替代解，精煉無誤。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/muse-wonder/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.1 Sol</h3><span class="chan">OpenRouter API</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 評分：歸零，但改報 11 盒">AI 良</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>歸零，但改報 11 盒</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-b" title="AI 盲評：全表展開無錯、僅搬兩筆歸零，唯內挪 11 盒略多。">AI 89 分 · #5</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>全表展開無錯、僅搬兩筆歸零，唯內挪 11 盒略多。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.1-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Carbon</h3><span class="chan">OpenRouter API (第三輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 評分：歸零，但五張單據跨計畫互換">AI 可</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>歸零，但五張單據跨計畫互換</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-c" title="AI 盲評：數學解完備，但 16k 截斷且正文裸露逾五百行修正草稿。">AI 76 分 · #6</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>數學解完備，但 16k 截斷且正文裸露逾五百行修正草稿。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-carbon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>GPT-6.2 Sol</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 評分：最接近實際配法，驗算無誤">AI 優</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>最接近實際配法，驗算無誤</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-a" title="AI 盲評：純 API 最佳，全表簡潔無誤，不增袋費挪 2 盒歸零。">AI 93 分 · #3</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>純 API 最佳，全表簡潔無誤，不增袋費挪 2 盒歸零。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer.md">作答</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gpt-6.2-sol/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article>
       <article class="card">
         
         <header><h3>Gemini 4 Neon</h3><span class="chan">OpenRouter API (第四輪追評)</span></header>
-        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 評分：思考耗盡上限，沒給出方案">AI 弱</span></div>
-        <p class="ai-note"><span class="who">AI 評語</span>思考耗盡上限，沒給出方案</p>
+        <div class="badges"><span class="rank none" title="人類未評">人類 未評</span><span class="rate r-d" title="AI 盲評：32k 截斷僅輸出 19 行即中斷，未能產出配平方案。">AI 15 分 · #8</span></div>
+        <p class="ai-note"><span class="who">AI 盲評</span>32k 截斷僅輸出 19 行即中斷，未能產出配平方案。</p>
         <nav class="links"><a class="btn primary" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/answer_32k%E6%88%AA%E6%96%B7.md">作答 (截斷版)</a><a class="btn" href="viewer.html?f=%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/reasoning.md">思考過程</a><a class="btn" href="%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3/response.json" target="_blank" rel="noopener">原始回應 JSON</a><a class="btn ghost" href="https://github.com/AG-0814/261014_LLM-Oneshot-Test/tree/main/%E6%B8%AC%E8%A9%A6%E7%B5%90%E6%9E%9C/gemini-4-neon/%E6%95%B8%E5%AD%B8%E8%A8%88%E7%AE%97excel%E8%A1%A8%E9%85%8D%E5%B9%B3" target="_blank" rel="noopener">GitHub</a></nav>
       </article></div>
   </section>
